@@ -1,9 +1,15 @@
 ﻿  main.cpp
-C:\Users\IT SUPPORTER\Desktop\Workspace\Unit Cube1\opengl_demo\include\Vector_Matrix.h(1,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\IT SUPPORTER\Desktop\Workspace\Unit Cube1\opengl_demo\main.cpp(187,24): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\IT SUPPORTER\Desktop\Workspace\Unit Cube1\opengl_demo\main.cpp(241,25): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\IT SUPPORTER\Desktop\Workspace\Unit Cube1\opengl_demo\main.cpp(650,22): warning C4305: '-=': truncation from 'double' to 'GLfloat'
-C:\Users\IT SUPPORTER\Desktop\Workspace\Unit Cube1\opengl_demo\main.cpp(651,48): warning C4305: '+=': truncation from 'double' to 'GLfloat'
-C:\Users\IT SUPPORTER\Desktop\Workspace\Unit Cube1\opengl_demo\main.cpp(653,22): warning C4305: '+=': truncation from 'double' to 'GLfloat'
-C:\Users\IT SUPPORTER\Desktop\Workspace\Unit Cube1\opengl_demo\main.cpp(654,48): warning C4305: '-=': truncation from 'double' to 'GLfloat'
-  opengl_demo.vcxproj -> C:\Users\IT SUPPORTER\Desktop\Workspace\Unit Cube1\x64\Debug\opengl_demo.exe
+D:\Workspace\DoHoaMayTinh\computer-graphics\opengl_demo\include\Vector_Matrix.h(1,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\Workspace\DoHoaMayTinh\computer-graphics\opengl_demo\main.cpp(190,18): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\Workspace\DoHoaMayTinh\computer-graphics\opengl_demo\main.cpp(244,19): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\Workspace\DoHoaMayTinh\computer-graphics\opengl_demo\main.cpp(564,59): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\Workspace\DoHoaMayTinh\computer-graphics\opengl_demo\main.cpp(572,63): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\Workspace\DoHoaMayTinh\computer-graphics\opengl_demo\main.cpp(574,28): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\Workspace\DoHoaMayTinh\computer-graphics\opengl_demo\main.cpp(574,18): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\Workspace\DoHoaMayTinh\computer-graphics\opengl_demo\main.cpp(576,28): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\Workspace\DoHoaMayTinh\computer-graphics\opengl_demo\main.cpp(576,18): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\Workspace\DoHoaMayTinh\computer-graphics\opengl_demo\main.cpp(652,19): warning C4305: '-=': truncation from 'double' to 'GLfloat'
+D:\Workspace\DoHoaMayTinh\computer-graphics\opengl_demo\main.cpp(653,45): warning C4305: '+=': truncation from 'double' to 'GLfloat'
+D:\Workspace\DoHoaMayTinh\computer-graphics\opengl_demo\main.cpp(655,19): warning C4305: '+=': truncation from 'double' to 'GLfloat'
+D:\Workspace\DoHoaMayTinh\computer-graphics\opengl_demo\main.cpp(656,45): warning C4305: '-=': truncation from 'double' to 'GLfloat'
+  opengl_demo.vcxproj -> D:\Workspace\DoHoaMayTinh\computer-graphics\x64\Debug\opengl_demo.exe

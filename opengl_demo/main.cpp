@@ -271,7 +271,7 @@ void tuaghe() {
 	mvstack.push(model_mat_cpp);
 
 	mat4 instance = identity_mat4();
-	instance = translate(vec3(0, 1.25, 7.75)) *
+	instance = translate(vec3(0, 6.75, 7.75)) *
 		scale(vec3(3.0f, 2.5f, 0.25f));
 
 	mat4 model_torso = model_mat_cpp * instance;
@@ -286,7 +286,7 @@ void changhengan() {
 	mvstack.push(model_mat_cpp);
 
 	mat4 instance = identity_mat4();
-	instance = translate(vec3(2, 2, 8)) *
+	instance = translate(vec3(1.5, 2, 5)) *
 		scale(vec3(0.25f, 3.75f, 0.25f));
 
 	mat4 model_torso = model_mat_cpp * instance;
@@ -301,7 +301,7 @@ void chongoi() {
 	mvstack.push(model_mat_cpp);
 
 	mat4 instance = identity_mat4();
-	instance = translate(vec3(0, 0, 0)) *
+	instance = translate(vec3(0, 4, 6.5)) *
 		scale(vec3(3.5f, 0.25f, 3.5f));
 
 	mat4 model_torso = model_mat_cpp * instance;
@@ -316,7 +316,7 @@ void casemaytinh() {
 	mvstack.push(model_mat_cpp);
 
 	mat4 instance = identity_mat4();
-	instance = translate(vec3(0, 0, 0)) *
+	instance = translate(vec3(-2, 8.25, 0.25)) *
 		scale(vec3(1.0f, 0.5f, 1.0f)) *
 		rotate_z(90);
 
@@ -334,8 +334,7 @@ void armScreen1() {
 
 	mat4 instance = identity_mat4();
 	instance = translate(vec3(0, 0, 0)) *
-		scale(vec3(0.3f, 1.0f, 0.3f)) *
-		rotate_z(90);
+		scale(vec3(0.3f, 1.0f, 0.3f));
 
 	mat4 model_torso = model_mat_cpp * instance;
 
@@ -349,8 +348,8 @@ void armScreen2() {
 	mvstack.push(model_mat_cpp);
 
 	mat4 instance = identity_mat4();
-	instance = translate(vec3(0, 1, 0)) *
-		scale(vec3(0.3f, 3.0f, 0.3f)) *
+	instance = translate(vec3(0, 0, 0)) *
+		scale(vec3(0.3f, 4.0f, 0.3f)) *
 		rotate_z(90);
 
 	mat4 model_torso = model_mat_cpp * instance;
@@ -539,49 +538,42 @@ void DisplayFunc(void)
 	model_mat_cpp = mvstack.pop();
 
 	// tua ghe
-	mvstack.push(model_mat_cpp);
-	model_mat_cpp = model_mat_cpp * translate(vec3(0, 5.5, 0));
 	tuaghe();
-	model_mat_cpp = mvstack.pop();
 
 	// chan ghe ngan 1
 	mvstack.push(model_mat_cpp);
-	model_mat_cpp = model_mat_cpp * translate(vec3(-0.5, 0, -3));
+	model_mat_cpp = model_mat_cpp * translate(vec3(0, 0, 0));
 	changhengan();
 	model_mat_cpp = mvstack.pop();
 
 	// chan ghe ngan 2
 	mvstack.push(model_mat_cpp);
-	model_mat_cpp = model_mat_cpp * translate(vec3(-3.5, 0, -3));
+	model_mat_cpp = model_mat_cpp * translate(vec3(-3, 0, 0));
 	changhengan();
 	model_mat_cpp = mvstack.pop();
 
-	// cho ngoi (tren ghe)
-	mvstack.push(model_mat_cpp);
-	model_mat_cpp = model_mat_cpp * translate(vec3(0, 4, 6.5));
+	// cho ngoi (tren ghe);
 	chongoi();
-	model_mat_cpp = mvstack.pop();
 
 	// Case may tinh
-	mvstack.push(model_mat_cpp);
-	model_mat_cpp = model_mat_cpp * translate(vec3(-2, 8.25, 0.25));
 	casemaytinh();
-	model_mat_cpp = mvstack.pop();
+
 
 	// Arm man hinh duoi
 	mvstack.push(model_mat_cpp);
-	model_mat_cpp = model_mat_cpp * translate(vec3(-5, 8.25, 0.25)) *
-		rotate_y(thetaArmScreen[ArmScr1]);
+	model_mat_cpp = model_mat_cpp * translate(vec3(-5, 8.25, 0.15)) *
+		rotate_y(thetaArmScreen[ArmScr1]);// *
+		// translate(vec3(-5, 8.25, 0.25));
 	armScreen1();
 	model_mat_cpp = mvstack.pop();
 
 	// Arm man hinh tren
 	mvstack.push(model_mat_cpp);
-	model_mat_cpp = model_mat_cpp * translate(vec3(-5, 10, 0.25)) *
-		rotate_y(thetaArmScreen[ArmScr1]) *
-		translate(vec3(0, -1.5, 0)) *
-		rotate_x(thetaArmScreen[ArmScr2] + 180) *
-		translate(vec3(0, -3, 0));
+	model_mat_cpp = model_mat_cpp * translate(vec3(-4.625, 6.75, -0.1)) *
+		rotate_y(thetaArmScreen[ArmScr1]) * 
+		translate(vec3(-0.15, 2, -0.15)) *
+		rotate_x(thetaArmScreen[ArmScr2]) *
+		translate(vec3(-0.15, 2, -0.15));
 	armScreen2();
 	model_mat_cpp = mvstack.pop();
 
