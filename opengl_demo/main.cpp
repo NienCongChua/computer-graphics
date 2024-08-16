@@ -24,6 +24,8 @@ typedef struct
 //  | |v7---|-|v4
 //  |/      |/
 //  v2------v3
+
+// hehe
 Vertex Vertices[] =
 {
 	// v0-v1-v2 (front)
@@ -122,6 +124,7 @@ float R[3] = { 10.0f, 10.0f, 12.0f };
 float T[3] = { 0.0f, 0.0f, 0.0f };
 float Y[3] = { 0.0f, 1.0f, 0.0f };
 float U[] = { 0.0f, 0.0f, 0.0f };
+float nien[3] = { 0.0f, 0.0f, 0.0f };
 
 int
 CurrentWidth = 800,
@@ -219,7 +222,7 @@ void chanban()
 
 	mat4 instance = identity_mat4();
 	instance =
-
+		translate(vec3(0, 4.0, 0)) *
 		scale(vec3(0.5f, 8.0f, 0.5f));
 
 	mat4 model_left_upper_arm = model_mat_cpp * instance;
@@ -253,7 +256,7 @@ void changhedai() {
 	mvstack.push(model_mat_cpp);
 
 	mat4 instance = identity_mat4();
-	instance = translate(vec3(2, 4, 8)) *
+	instance = translate(vec3(1.5, 4, 8)) *
 		scale(vec3(0.25f, 8.0f, 0.25f));
 
 	mat4 model_torso = model_mat_cpp * instance;
@@ -363,7 +366,7 @@ void screen() {
 
 	mat4 instance = identity_mat4();
 	instance = translate(vec3(0, 1, 0)) *
-		scale(vec3(5.3f, 3.6f, 0.3f)) *
+		scale(vec3(5.0f, 3.5f, 0.3f)) *
 		translate(vec3(0, 3, 0)) *
 		rotate_x(90) *
 		rotate_z(90);
@@ -482,6 +485,8 @@ void DisplayFunc(void)
 	// thân
 
 	matsan();
+
+	// matban
 	matban();
 
 	// Ngan ban
@@ -496,40 +501,40 @@ void DisplayFunc(void)
 	// Chan ban 1
 	mvstack.push(model_mat_cpp);
 	model_mat_cpp = model_mat_cpp *
-		translate(vec3(-4.5, 4.0, 0.0));
+		translate(vec3(-4.5, 0, 0.0));
 	chanban();
 	model_mat_cpp = mvstack.pop();
 
 	// chan ban 2
 	mvstack.push(model_mat_cpp);
 	model_mat_cpp = model_mat_cpp *
-		translate(vec3(-4.5, 4.0, 4.0));
+		translate(vec3(-4.5, 0, 4.0));
 	chanban();
 	model_mat_cpp = mvstack.pop();
 
 	// Chan ban 3
 	mvstack.push(model_mat_cpp);
 	model_mat_cpp = model_mat_cpp *
-		translate(vec3(4.5, 4.0, 0.0));
+		translate(vec3(4.5, 0, 0.0));
 	chanban();
 	model_mat_cpp = mvstack.pop();
 	//// chan ban 4
 	mvstack.push(model_mat_cpp);
 	model_mat_cpp = model_mat_cpp *
-		translate(vec3(4.5, 4.0, 4.0));
+		translate(vec3(4.5, 0, 4.0));
 	chanban();
 	model_mat_cpp = mvstack.pop();
 
 
 	// chan ghe dai 1
 	mvstack.push(model_mat_cpp);
-	model_mat_cpp = model_mat_cpp * translate(vec3(-0.5, 0, 0));
+	model_mat_cpp = model_mat_cpp * translate(vec3(0, 0, 0));
 	changhedai();
 	model_mat_cpp = mvstack.pop();
 
 	// chan ghe dai 2
 	mvstack.push(model_mat_cpp);
-	model_mat_cpp = model_mat_cpp * translate(vec3(-3.5, 0, 0));
+	model_mat_cpp = model_mat_cpp * translate(vec3(-3, 0, 0));
 	changhedai();
 	model_mat_cpp = mvstack.pop();
 
@@ -582,14 +587,19 @@ void DisplayFunc(void)
 
 
 	// Man hinh
-	mvstack.push(model_mat_cpp);
-	model_mat_cpp = model_mat_cpp * translate(vec3(-5, 10, 0.25)) *
+	/*mvstack.push(model_mat_cpp);
+	model_mat_cpp = model_mat_cpp *
 		rotate_y(thetaArmScreen[ArmScr1]) *
 		translate(vec3(0, -1.5, 0)) *
 		rotate_x(thetaArmScreen[ArmScr2] + 180) *
-		translate(vec3(0, -3, 0));
+		translate(vec3(0, -3, 0)) * 
+		translate(vec3(0, -14, 0)) * 
+		rotate_y(90) * 
+		translate(vec3(0, 0, -1.75)) *
+		rotate_z(nien[2]) *
+		translate(vec3(0, 0, -3.5));
 	screen();
-	model_mat_cpp = mvstack.pop();
+	model_mat_cpp = mvstack.pop();*/
 
 
 	glutSwapBuffers();
@@ -694,6 +704,18 @@ void KeyboardFunc(unsigned char key, int x, int y)
 	case '+':
 		thetaArmScreen[angle] -= 8;
 		if (thetaArmScreen[angle] < 0) { thetaArmScreen[angle] += 8; }; break;
+	case '0':
+		nien[0] += 10; break;
+	case '1':
+		nien[0] -= 10; break;
+	case '2':
+		nien[1] += 10; break;
+	case '3':
+		nien[1] -= 10; break;
+	case '4':
+		nien[2] += 10; break;
+	case '5':
+		nien[2] -= 10; break;
 	}
 }
 // ------------------------------------------
