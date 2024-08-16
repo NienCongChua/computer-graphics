@@ -153,6 +153,7 @@ enum {
 	NganBan,//1
 	ArmScr1,
 	ArmScr2,		//2
+	ArmScr3,
 	Cua1,			//3
 	NumJointAngles,	//11
 	Quit			//12
@@ -165,6 +166,7 @@ theta[NumJointAngles] = {
 	0.0,    // Head1
 	85.0,    // Head2
 	45.0,
+	0.0,
 	45.0
 },
 
@@ -349,8 +351,22 @@ void armScreen2() {
 
 	mat4 instance = identity_mat4();
 	instance = translate(vec3(0, 0, 0)) *
-		scale(vec3(0.3f, 4.0f, 0.3f)) *
-		rotate_z(90);
+		scale(vec3(0.3f, 4.0f, 0.3f));
+
+	mat4 model_torso = model_mat_cpp * instance;
+
+	glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
+	glDrawArrays(GL_TRIANGLES, 0, 36);
+
+	model_mat_cpp = mvstack.pop();
+}
+
+void armScreen3() {
+	mvstack.push(model_mat_cpp);
+
+	mat4 instance = identity_mat4();
+	instance = translate(vec3(0, 0, 0)) *
+		scale(vec3(0.5f, 0.3f, 0.3f));
 
 	mat4 model_torso = model_mat_cpp * instance;
 
@@ -569,15 +585,28 @@ void DisplayFunc(void)
 
 	// Arm man hinh tren
 	mvstack.push(model_mat_cpp);
-	model_mat_cpp = model_mat_cpp * translate(vec3(-4.625, 6.75, -0.1)) *
-		rotate_y(thetaArmScreen[ArmScr1]) * 
+	model_mat_cpp = model_mat_cpp * translate(vec3(-5, 8.25, 0.15)) * 
+		translate(vec3(0, 2.5, 0)) * rotate_y(thetaArmScreen[ArmScr1] + 180) *
+		translate(vec3(0, -2, 0)) *
+		rotate_x(thetaArmScreen[ArmScr2] + 90) * 
+		translate(vec3(0, -2, 0));
+		/*rotate_y(thetaArmScreen[ArmScr1]) * 
 		translate(vec3(-0.15, 2, -0.15)) *
 		rotate_x(thetaArmScreen[ArmScr2]) *
-		translate(vec3(-0.15, 2, -0.15));
+		translate(vec3(-0.15, 2, -0.15));*/
 	armScreen2();
 	model_mat_cpp = mvstack.pop();
 
-
+	// Arm man hinh truoc
+	mvstack.push(model_mat_cpp);
+	model_mat_cpp = model_mat_cpp * translate(vec3(-5, 8.25, 0.15)) *
+		translate(vec3(0, 2.5, 0)) * rotate_y(thetaArmScreen[ArmScr1] + 180) *
+		translate(vec3(0, -2, 0)) *
+		rotate_x(thetaArmScreen[ArmScr2] + 90) *
+		translate(vec3(0, -2, 0)) *
+		translate(vec3(0.5, -1.85, 0)) ;
+	armScreen3();
+	model_mat_cpp = mvstack.pop();
 	// Man hinh
 	/*mvstack.push(model_mat_cpp);
 	model_mat_cpp = model_mat_cpp *
@@ -765,6 +794,7 @@ int main(int argc, char* argv[])
 	glutAddMenuEntry("Ngan Ban", NganBan);
 	glutAddMenuEntry("Arm Low Screen", ArmScr1);
 	glutAddMenuEntry("Arm High Screen", ArmScr2);
+	glutAddMenuEntry("Arm Screen in front of", ArmScr3);
 	glutAddMenuEntry("quit", Quit);
 
 	// kích hoạt menu bằng nhấn nút giữa chuột
