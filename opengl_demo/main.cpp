@@ -164,18 +164,18 @@ GLfloat
 theta[NumJointAngles] = {
 	0.0,    // Torso
 	0.0,    // Head1
-	85.0,    // Head2
-	45.0,
+	90.0,    // Head2
+	50.0,
 	0.0,
 	45.0
 },
 
 thetaArmScreen[NumJointAngles] = {
 	30.0,    // Torso
-	45.0,    // Head1
-	80.0,    // Head2
-	45.0,
-	30.0
+	50.0,    // Head1
+	90.0,    // Head2
+	10.0,
+	-10.0
 };
 
 // khởi tạo đối tượng quay
@@ -380,11 +380,8 @@ void screen() {
 	mvstack.push(model_mat_cpp);
 
 	mat4 instance = identity_mat4();
-	instance = translate(vec3(0, 1, 0)) *
-		scale(vec3(5.0f, 3.5f, 0.3f)) *
-		translate(vec3(0, 3, 0)) *
-		rotate_x(90) *
-		rotate_z(90);
+	instance = translate(vec3(0, 0, 0)) *
+		scale(vec3(0.3f, 5.0f, 3.5f));
 
 	mat4 model_torso = model_mat_cpp * instance;
 
@@ -394,6 +391,53 @@ void screen() {
 	model_mat_cpp = mvstack.pop();
 }
 
+// Vien man hinh
+void _screen() {
+	mvstack.push(model_mat_cpp);
+
+	mat4 instance = identity_mat4();
+	instance = translate(vec3(0, 0, 0)) *
+		scale(vec3(0.1f, 4.8f, 3.3f));
+
+	mat4 model_torso = model_mat_cpp * instance;
+
+	glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
+	glDrawArrays(GL_TRIANGLES, 0, 36);
+
+	model_mat_cpp = mvstack.pop();
+}
+
+void keyboard() {
+	mvstack.push(model_mat_cpp);
+
+	mat4 instance = identity_mat4();
+	instance = translate(vec3(0, 0, 0)) *
+		scale(vec3(4.0f, 0.1f, 2.0f)) * translate(vec3(0, 81, 1.2)) * rotate_x(90) * rotate_z(90);
+
+	mat4 model_torso = model_mat_cpp * instance;
+
+	glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
+	glDrawArrays(GL_TRIANGLES, 0, 36);
+
+	model_mat_cpp = mvstack.pop();
+}
+
+// Mouse
+void mouse() {
+	mvstack.push(model_mat_cpp);
+
+	mat4 instance = identity_mat4();
+	instance = translate(vec3(0, 0, 0)) *
+		scale(vec3(0.5f, 0.5f, 0.8f)) * translate(vec3(-7, 16.5, 3.5)) * rotate_x(90) * rotate_z(90);
+
+	mat4 model_torso = model_mat_cpp * instance;
+
+	glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
+	glDrawArrays(GL_TRIANGLES, 0, 36);
+
+	model_mat_cpp = mvstack.pop();
+
+}
 // ------------------------------------------
 
 // ------------------------------------------
@@ -604,23 +648,43 @@ void DisplayFunc(void)
 		translate(vec3(0, -2, 0)) *
 		rotate_x(thetaArmScreen[ArmScr2] + 90) *
 		translate(vec3(0, -2, 0)) *
-		translate(vec3(0.5, -1.85, 0)) ;
+		translate(vec3(0.3, -1.85, 0)) * 
+		rotate_x(thetaArmScreen[ArmScr3]);
 	armScreen3();
 	model_mat_cpp = mvstack.pop();
+
 	// Man hinh
-	/*mvstack.push(model_mat_cpp);
-	model_mat_cpp = model_mat_cpp *
-		rotate_y(thetaArmScreen[ArmScr1]) *
-		translate(vec3(0, -1.5, 0)) *
-		rotate_x(thetaArmScreen[ArmScr2] + 180) *
-		translate(vec3(0, -3, 0)) * 
-		translate(vec3(0, -14, 0)) * 
-		rotate_y(90) * 
-		translate(vec3(0, 0, -1.75)) *
-		rotate_z(nien[2]) *
-		translate(vec3(0, 0, -3.5));
+	mvstack.push(model_mat_cpp);
+	model_mat_cpp = model_mat_cpp * translate(vec3(-5, 8.25, 0.15)) *
+		translate(vec3(0, 2.5, 0)) * rotate_y(thetaArmScreen[ArmScr1] + 180) *
+		translate(vec3(0, -2, 0)) *
+		rotate_x(thetaArmScreen[ArmScr2] + 90) *
+		translate(vec3(0, -2, 0)) *
+		translate(vec3(0.3, -1.85, 0)) *
+		rotate_x(thetaArmScreen[ArmScr3]) *
+		translate(vec3(0.25, 0, -1)) ;
 	screen();
-	model_mat_cpp = mvstack.pop();*/
+	model_mat_cpp = mvstack.pop();
+
+	// Vien man hinh
+	mvstack.push(model_mat_cpp);
+	model_mat_cpp = model_mat_cpp * translate(vec3(-5, 8.25, 0.15)) *
+		translate(vec3(0, 2.5, 0)) * rotate_y(thetaArmScreen[ArmScr1] + 180) *
+		translate(vec3(0, -2, 0)) *
+		rotate_x(thetaArmScreen[ArmScr2] + 90) *
+		translate(vec3(0, -2, 0)) *
+		translate(vec3(0.3, -1.85, 0)) *
+		rotate_x(thetaArmScreen[ArmScr3]) *
+		translate(vec3(0.25, 0, -1)) * rotate_y(180) * 
+		translate(vec3(-0.11, 0, 0));
+	_screen();
+	model_mat_cpp = mvstack.pop();
+	
+	// Ban phim
+	keyboard();
+
+	// Chuot
+	mouse();
 
 
 	glutSwapBuffers();
@@ -744,13 +808,13 @@ void MouseFunc(int button, int state, int x, int y)
 {
 
 	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
-		thetaArmScreen[angle] += 8;
-		if (thetaArmScreen[angle] > 85) { thetaArmScreen[angle] -= 8; }
+		thetaArmScreen[angle] += 10;
+		if (thetaArmScreen[angle] > 90) { thetaArmScreen[angle] -= 10; }
 	}
 
 	if (button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN) {
-		thetaArmScreen[angle] -= 8;
-		if (thetaArmScreen[angle] < 0) { thetaArmScreen[angle] += 8; }
+		thetaArmScreen[angle] -= 10;
+		if (thetaArmScreen[angle] < -90) { thetaArmScreen[angle] += 10; }
 	}
 
 	glutPostRedisplay();
