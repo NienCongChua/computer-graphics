@@ -1,0 +1,9 @@
+﻿  main.cpp
+F:\DoHoaMayTinh\demo\opengl_demo\include\GL\Vector_Matrix.h(1,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+F:\DoHoaMayTinh\demo\opengl_demo\main.cpp(187,18): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\DoHoaMayTinh\demo\opengl_demo\main.cpp(241,19): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\DoHoaMayTinh\demo\opengl_demo\main.cpp(650,19): warning C4305: '-=': truncation from 'double' to 'GLfloat'
+F:\DoHoaMayTinh\demo\opengl_demo\main.cpp(651,45): warning C4305: '+=': truncation from 'double' to 'GLfloat'
+F:\DoHoaMayTinh\demo\opengl_demo\main.cpp(653,19): warning C4305: '+=': truncation from 'double' to 'GLfloat'
+F:\DoHoaMayTinh\demo\opengl_demo\main.cpp(654,45): warning C4305: '-=': truncation from 'double' to 'GLfloat'
+  opengl_demo.vcxproj -> F:\DoHoaMayTinh\demo\x64\Debug\opengl_demo.exe
