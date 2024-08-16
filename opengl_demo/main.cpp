@@ -6,7 +6,7 @@
 #include <GL/glew.h>
 #include <GL/freeglut.h>
 
-#include <GL/Vector_Matrix.h>
+#include <Vector_Matrix.h>
 
 
 using namespace std;
@@ -212,7 +212,7 @@ void matsan() {
 
 	model_mat_cpp = mvstack.pop();
 }
-	// chan ban
+// chan ban
 void chanban()
 {
 	mvstack.push(model_mat_cpp);
@@ -364,7 +364,7 @@ void screen() {
 	mat4 instance = identity_mat4();
 	instance = translate(vec3(0, 1, 0)) *
 		scale(vec3(5.3f, 3.6f, 0.3f)) *
-		translate(vec3(0, 3, 0)) * 
+		translate(vec3(0, 3, 0)) *
 		rotate_x(90) *
 		rotate_z(90);
 
@@ -565,7 +565,7 @@ void DisplayFunc(void)
 
 	// Arm man hinh duoi
 	mvstack.push(model_mat_cpp);
-	model_mat_cpp = model_mat_cpp * translate(vec3(-5, 8.25, 0.25)) * 
+	model_mat_cpp = model_mat_cpp * translate(vec3(-5, 8.25, 0.25)) *
 		rotate_y(thetaArmScreen[ArmScr1]);
 	armScreen1();
 	model_mat_cpp = mvstack.pop();
@@ -575,7 +575,7 @@ void DisplayFunc(void)
 	model_mat_cpp = model_mat_cpp * translate(vec3(-5, 10, 0.25)) *
 		rotate_y(thetaArmScreen[ArmScr1]) *
 		translate(vec3(0, -1.5, 0)) *
-		rotate_x(thetaArmScreen[ArmScr2] + 180) * 
+		rotate_x(thetaArmScreen[ArmScr2] + 180) *
 		translate(vec3(0, -3, 0));
 	armScreen2();
 	model_mat_cpp = mvstack.pop();

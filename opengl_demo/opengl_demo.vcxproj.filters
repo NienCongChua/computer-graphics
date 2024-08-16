@@ -20,10 +20,15 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="vs.shader">
+    <ClInclude Include="include\vector_matrix.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="fs.shader">
       <Filter>Source Files</Filter>
     </None>
-    <None Include="fs.shader">
+    <None Include="vs.shader">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>
