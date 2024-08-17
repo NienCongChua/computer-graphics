@@ -222,7 +222,6 @@ void ben_trai()
 	glDrawArrays(GL_TRIANGLES, 0, 36);
 }
 
-
 #pragma region Tuong nha
 namespace Tuong {
 	void trannha() {
