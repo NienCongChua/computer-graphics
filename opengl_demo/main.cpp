@@ -124,6 +124,8 @@ float R[3] = { 10.0f, 10.0f, 12.0f };
 float T[3] = { 0.0f, 0.0f, 0.0f };
 float Y[3] = { 0.0f, 1.0f, 0.0f };
 float U[] = { 0.0f, 0.0f, 0.0f };
+float Alpha = 0.0f;
+bool _switch = true;
 
 int
 CurrentWidth = 800,
@@ -181,13 +183,14 @@ thetaArmScreen[NumJointAngles] = {
 GLint angle = NganBan;
 
 // ------------------------------------------
+#pragma region Tuong nha
 namespace Tuong {
 	void trannha() {
 		mvstack.push(model_mat_cpp);
 
 		mat4 instance = identity_mat4();
-		instance =
-			scale(vec3(100.0f, 0.01f, 100.0f)) * rotate_z(90) * rotate_y(90) * rotate_x(180);
+		instance = translate(vec3(0, 25, 0)) *
+			scale(vec3(100.0f, 0.01f, 100.0f));
 
 		mat4 model_left_upper_arm = model_mat_cpp * instance;
 
@@ -217,11 +220,9 @@ namespace Tuong {
 		model_mat_cpp = mvstack.pop();
 	}
 }
-	// thân
-
-// Tran nha
-
-// chan ban
+#pragma endregion
+	
+#pragma region Ban Lam viec
 namespace BanLamViec {
 	void matban()
 	{
@@ -274,7 +275,9 @@ namespace BanLamViec {
 		model_mat_cpp = mvstack.pop();
 	}
 }
+#pragma endregion
 
+#pragma region Ghe ngoi
 namespace GheNgoi {
 	void changhedai() {
 		mvstack.push(model_mat_cpp);
@@ -335,10 +338,10 @@ namespace GheNgoi {
 
 		model_mat_cpp = mvstack.pop();
 	}
-
 }
-// Xay dung cai ghe
+#pragma endregion
 
+#pragma region May tinh va Arm man hinh, chuot, ban pham
 namespace MayTinh {
 	void casemaytinh() {
 		mvstack.push(model_mat_cpp);
@@ -465,6 +468,70 @@ namespace MayTinh {
 
 	}
 }
+#pragma endregion
+
+#pragma region Quat tran
+namespace QuatTran {
+	void dequat() {
+		mvstack.push(model_mat_cpp);
+
+		mat4 instance = identity_mat4();
+		instance = translate(vec3(0, 0, 0)) *
+			scale(vec3(1.0f, 0.3f, 1.0f)) * rotate_x(90) * rotate_z(90);
+
+		mat4 model_torso = model_mat_cpp * instance;
+
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		model_mat_cpp = mvstack.pop();
+	}
+
+	void thanquat() {
+		mvstack.push(model_mat_cpp);
+
+		mat4 instance = identity_mat4();
+		instance = translate(vec3(0, 0, 0)) *
+			scale(vec3(0.5f, 3.0f, 0.5f));
+
+		mat4 model_torso = model_mat_cpp * instance;
+
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		model_mat_cpp = mvstack.pop();
+	}
+
+	void bauquat() {
+		mvstack.push(model_mat_cpp);
+		mat4 instance = identity_mat4();
+		instance = translate(vec3(0, 0, 0)) *
+			scale(vec3(2.0f, 0.3f, 2.0f));
+
+		mat4 model_torso = model_mat_cpp * instance;
+
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		model_mat_cpp = mvstack.pop();
+	}
+
+	void canhquat() {
+		mvstack.push(model_mat_cpp);
+		mat4 instance = identity_mat4();
+		instance = translate(vec3(0, 0, 0)) *
+			scale(vec3(1.0f, 0.25f, 2.0f));
+
+		mat4 model_torso = model_mat_cpp * instance;
+
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		model_mat_cpp = mvstack.pop();
+	}
+}
+#pragma endregion
+
 
 // ------------------------------------------
 
@@ -569,10 +636,11 @@ void DisplayFunc(void)
 	glClearColor(0.0, 0.0, 0.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	// thân
-	Tuong::matsan();
+	// San nha
+	// Tuong::matsan();
 
-	// matban
+	#pragma region Ve Ban Lam Viec
+		// matban
 	BanLamViec::matban();
 
 	// Ngan ban
@@ -609,7 +677,9 @@ void DisplayFunc(void)
 	BanLamViec::chanban();
 	model_mat_cpp = mvstack.pop();
 
+	#pragma endregion
 
+	#pragma region Ve Ghe Ngoi
 	// chan ghe dai 1
 	mvstack.push(model_mat_cpp);
 	model_mat_cpp = model_mat_cpp * translate(vec3(0, 0, 0));
@@ -639,7 +709,9 @@ void DisplayFunc(void)
 
 	// cho ngoi (tren ghe);
 	GheNgoi::chongoi();
+	#pragma endregion
 
+	#pragma region Ve May Tinh
 	// Case may tinh
 	MayTinh::casemaytinh();
 
@@ -710,6 +782,37 @@ void DisplayFunc(void)
 
 	// Chuot
 	MayTinh::mouse();
+	#pragma endregion
+
+	// Tran nha
+	Tuong::trannha();
+
+	#pragma region Ve Quat Tran
+	// De quat
+	mvstack.push(model_mat_cpp);
+	model_mat_cpp = model_mat_cpp * translate(vec3(0, 24.8, 5));
+	QuatTran::dequat();
+	model_mat_cpp = mvstack.pop();
+
+	// Than quat
+	mvstack.push(model_mat_cpp);
+	model_mat_cpp = model_mat_cpp * translate(vec3(0, 23, 5));
+	QuatTran::thanquat();
+	model_mat_cpp = mvstack.pop();
+
+	// Bau quat
+	mvstack.push(model_mat_cpp);
+	model_mat_cpp = model_mat_cpp * translate(vec3(0, 21.6, 5)) *
+		rotate_y(Alpha);
+	QuatTran::bauquat();
+	model_mat_cpp = mvstack.pop();
+
+	// Canh quat
+	/*mvstack.push(model_mat_cpp);
+	model_mat_cpp = model_mat_cpp * translate(vec3(0, 0, 0));
+	QuatTran::canhquat();
+	model_mat_cpp = mvstack.pop();*/
+	#pragma endregion
 
 
 	glutSwapBuffers();
@@ -745,7 +848,17 @@ void ReshapeFunc(int Width, int Height)
 // ------------------------------------------
 void IdleFunc(void)
 {
-	glutPostRedisplay();
+	if (_switch) {
+		Alpha += 1.0f;
+		if (Alpha > 360.0f) {
+			Alpha -= 360.0f;
+		}
+		glutPostRedisplay();
+	}
+	else {
+		glutPostRedisplay();
+	}
+	
 }
 // ------------------------------------------
 
@@ -814,6 +927,15 @@ void KeyboardFunc(unsigned char key, int x, int y)
 	case '+':
 		thetaArmScreen[angle] -= 8;
 		if (thetaArmScreen[angle] < 0) { thetaArmScreen[angle] += 8; }; break;
+	case '0':
+		if (_switch) {
+			_switch = false;
+			break;
+		}
+		else {
+			_switch = true;
+			break;
+		}
 	}
 }
 // ------------------------------------------
