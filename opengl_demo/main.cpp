@@ -124,7 +124,6 @@ float R[3] = { 10.0f, 10.0f, 12.0f };
 float T[3] = { 0.0f, 0.0f, 0.0f };
 float Y[3] = { 0.0f, 1.0f, 0.0f };
 float U[] = { 0.0f, 0.0f, 0.0f };
-float nien[3] = { 0.0f, 0.0f, 0.0f };
 
 int
 CurrentWidth = 800,
@@ -182,262 +181,291 @@ thetaArmScreen[NumJointAngles] = {
 GLint angle = NganBan;
 
 // ------------------------------------------
+namespace Tuong {
+	void trannha() {
+		mvstack.push(model_mat_cpp);
+
+		mat4 instance = identity_mat4();
+		instance =
+			scale(vec3(100.0f, 0.01f, 100.0f)) * rotate_z(90) * rotate_y(90) * rotate_x(180);
+
+		mat4 model_left_upper_arm = model_mat_cpp * instance;
+
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_left_upper_arm.m);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		model_mat_cpp = mvstack.pop();
+	}
+
+	// ------------------------------------------
+
+	// ------------------------------------------
+	// 
+		// mat san
+	void matsan() {
+		mvstack.push(model_mat_cpp);
+
+		mat4 instance = identity_mat4();
+		instance =
+			scale(vec3(100.0f, 0.01f, 100.0f)) * rotate_z(90) * rotate_y(90) * rotate_x(180);
+
+		mat4 model_left_upper_arm = model_mat_cpp * instance;
+
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_left_upper_arm.m);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		model_mat_cpp = mvstack.pop();
+	}
+}
 	// thân
-void matban()
-{
-	mvstack.push(model_mat_cpp);
 
-	mat4 instance = identity_mat4();
-	instance = translate(vec3(0.0, 8.0, 2.0)) *
-		scale(vec3(10, 0.1, 5)); //6, 8, 4
+// Tran nha
 
-	mat4 model_torso = model_mat_cpp * instance;
-
-	glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
-	glDrawArrays(GL_TRIANGLES, 0, 36);
-
-	model_mat_cpp = mvstack.pop();
-}
-// ------------------------------------------
-
-// ------------------------------------------
-// 
-	// mat san
-void matsan() {
-	mvstack.push(model_mat_cpp);
-
-	mat4 instance = identity_mat4();
-	instance =
-		scale(vec3(20.0f, 0.01f, 20.0f)) * rotate_z(90) * rotate_y(90) * rotate_x(180);
-
-	mat4 model_left_upper_arm = model_mat_cpp * instance;
-
-	glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_left_upper_arm.m);
-	glDrawArrays(GL_TRIANGLES, 0, 36);
-
-	model_mat_cpp = mvstack.pop();
-}
 // chan ban
-void chanban()
-{
-	mvstack.push(model_mat_cpp);
+namespace BanLamViec {
+	void matban()
+	{
+		mvstack.push(model_mat_cpp);
 
-	mat4 instance = identity_mat4();
-	instance =
-		translate(vec3(0, 4.0, 0)) *
-		scale(vec3(0.5f, 8.0f, 0.5f));
+		mat4 instance = identity_mat4();
+		instance = translate(vec3(0.0, 8.0, 2.0)) *
+			scale(vec3(10, 0.1, 5)); //6, 8, 4
 
-	mat4 model_left_upper_arm = model_mat_cpp * instance;
+		mat4 model_torso = model_mat_cpp * instance;
 
-	glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_left_upper_arm.m);
-	glDrawArrays(GL_TRIANGLES, 0, 36);
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
 
-	model_mat_cpp = mvstack.pop();
+		model_mat_cpp = mvstack.pop();
+	}
+
+	void chanban()
+	{
+		mvstack.push(model_mat_cpp);
+
+		mat4 instance = identity_mat4();
+		instance =
+			translate(vec3(0, 4.0, 0)) *
+			scale(vec3(0.5f, 8.0f, 0.5f));
+
+		mat4 model_left_upper_arm = model_mat_cpp * instance;
+
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_left_upper_arm.m);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		model_mat_cpp = mvstack.pop();
+	}
+
+
+
+	void nganban()
+	{
+		mvstack.push(model_mat_cpp);
+
+		mat4 instance = identity_mat4();
+		instance = translate(vec3(0, 6, 2)) *
+			scale(vec3(8.5, 0.1, 5)); //6, 8, 4
+
+		mat4 model_torso = model_mat_cpp * instance;
+
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		model_mat_cpp = mvstack.pop();
+	}
 }
 
+namespace GheNgoi {
+	void changhedai() {
+		mvstack.push(model_mat_cpp);
 
+		mat4 instance = identity_mat4();
+		instance = translate(vec3(1.5, 4, 8)) *
+			scale(vec3(0.25f, 8.0f, 0.25f));
 
-void nganban()
-{
-	mvstack.push(model_mat_cpp);
+		mat4 model_torso = model_mat_cpp * instance;
 
-	mat4 instance = identity_mat4();
-	instance = translate(vec3(0, 6, 2)) *
-		scale(vec3(8.5, 0.1, 5)); //6, 8, 4
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
 
-	mat4 model_torso = model_mat_cpp * instance;
+		model_mat_cpp = mvstack.pop();
+	}
 
-	glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
-	glDrawArrays(GL_TRIANGLES, 0, 36);
+	void tuaghe() {
+		mvstack.push(model_mat_cpp);
 
-	model_mat_cpp = mvstack.pop();
+		mat4 instance = identity_mat4();
+		instance = translate(vec3(0, 6.75, 7.75)) *
+			scale(vec3(3.0f, 2.5f, 0.25f));
+
+		mat4 model_torso = model_mat_cpp * instance;
+
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		model_mat_cpp = mvstack.pop();
+	}
+
+	void changhengan() {
+		mvstack.push(model_mat_cpp);
+
+		mat4 instance = identity_mat4();
+		instance = translate(vec3(1.5, 2, 5)) *
+			scale(vec3(0.25f, 3.75f, 0.25f));
+
+		mat4 model_torso = model_mat_cpp * instance;
+
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		model_mat_cpp = mvstack.pop();
+	}
+
+	void chongoi() {
+		mvstack.push(model_mat_cpp);
+
+		mat4 instance = identity_mat4();
+		instance = translate(vec3(0, 4, 6.5)) *
+			scale(vec3(3.5f, 0.25f, 3.5f));
+
+		mat4 model_torso = model_mat_cpp * instance;
+
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		model_mat_cpp = mvstack.pop();
+	}
+
 }
-
 // Xay dung cai ghe
-void changhedai() {
-	mvstack.push(model_mat_cpp);
 
-	mat4 instance = identity_mat4();
-	instance = translate(vec3(1.5, 4, 8)) *
-		scale(vec3(0.25f, 8.0f, 0.25f));
+namespace MayTinh {
+	void casemaytinh() {
+		mvstack.push(model_mat_cpp);
 
-	mat4 model_torso = model_mat_cpp * instance;
+		mat4 instance = identity_mat4();
+		instance = translate(vec3(-2, 8.25, 0.25)) *
+			scale(vec3(1.0f, 0.5f, 1.0f)) *
+			rotate_z(90);
 
-	glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
-	glDrawArrays(GL_TRIANGLES, 0, 36);
+		mat4 model_torso = model_mat_cpp * instance;
 
-	model_mat_cpp = mvstack.pop();
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		model_mat_cpp = mvstack.pop();
+	}
+
+
+	void armScreen1() {
+		mvstack.push(model_mat_cpp);
+
+		mat4 instance = identity_mat4();
+		instance = translate(vec3(0, 0, 0)) *
+			scale(vec3(0.3f, 1.0f, 0.3f));
+
+		mat4 model_torso = model_mat_cpp * instance;
+
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		model_mat_cpp = mvstack.pop();
+	}
+
+	void armScreen2() {
+		mvstack.push(model_mat_cpp);
+
+		mat4 instance = identity_mat4();
+		instance = translate(vec3(0, 0, 0)) *
+			scale(vec3(0.3f, 4.0f, 0.3f));
+
+		mat4 model_torso = model_mat_cpp * instance;
+
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		model_mat_cpp = mvstack.pop();
+	}
+
+	void armScreen3() {
+		mvstack.push(model_mat_cpp);
+
+		mat4 instance = identity_mat4();
+		instance = translate(vec3(0, 0, 0)) *
+			scale(vec3(0.5f, 0.3f, 0.3f));
+
+		mat4 model_torso = model_mat_cpp * instance;
+
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		model_mat_cpp = mvstack.pop();
+	}
+
+	void screen() {
+		mvstack.push(model_mat_cpp);
+
+		mat4 instance = identity_mat4();
+		instance = translate(vec3(0, 0, 0)) *
+			scale(vec3(0.3f, 5.0f, 3.5f));
+
+		mat4 model_torso = model_mat_cpp * instance;
+
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		model_mat_cpp = mvstack.pop();
+	}
+
+	// Vien man hinh
+	void _screen() {
+		mvstack.push(model_mat_cpp);
+
+		mat4 instance = identity_mat4();
+		instance = translate(vec3(0, 0, 0)) *
+			scale(vec3(0.1f, 4.8f, 3.3f));
+
+		mat4 model_torso = model_mat_cpp * instance;
+
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		model_mat_cpp = mvstack.pop();
+	}
+
+	void keyboard() {
+		mvstack.push(model_mat_cpp);
+
+		mat4 instance = identity_mat4();
+		instance = translate(vec3(0, 0, 0)) *
+			scale(vec3(4.0f, 0.1f, 2.0f)) * translate(vec3(0, 81, 1.2)) * rotate_x(90) * rotate_z(90);
+
+		mat4 model_torso = model_mat_cpp * instance;
+
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		model_mat_cpp = mvstack.pop();
+	}
+
+	// Mouse
+	void mouse() {
+		mvstack.push(model_mat_cpp);
+
+		mat4 instance = identity_mat4();
+		instance = translate(vec3(0, 0, 0)) *
+			scale(vec3(0.5f, 0.5f, 0.8f)) * translate(vec3(-7, 16.5, 3.5)) * rotate_x(90) * rotate_z(90);
+
+		mat4 model_torso = model_mat_cpp * instance;
+
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		model_mat_cpp = mvstack.pop();
+
+	}
 }
 
-void tuaghe() {
-	mvstack.push(model_mat_cpp);
-
-	mat4 instance = identity_mat4();
-	instance = translate(vec3(0, 6.75, 7.75)) *
-		scale(vec3(3.0f, 2.5f, 0.25f));
-
-	mat4 model_torso = model_mat_cpp * instance;
-
-	glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
-	glDrawArrays(GL_TRIANGLES, 0, 36);
-
-	model_mat_cpp = mvstack.pop();
-}
-
-void changhengan() {
-	mvstack.push(model_mat_cpp);
-
-	mat4 instance = identity_mat4();
-	instance = translate(vec3(1.5, 2, 5)) *
-		scale(vec3(0.25f, 3.75f, 0.25f));
-
-	mat4 model_torso = model_mat_cpp * instance;
-
-	glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
-	glDrawArrays(GL_TRIANGLES, 0, 36);
-
-	model_mat_cpp = mvstack.pop();
-}
-
-void chongoi() {
-	mvstack.push(model_mat_cpp);
-
-	mat4 instance = identity_mat4();
-	instance = translate(vec3(0, 4, 6.5)) *
-		scale(vec3(3.5f, 0.25f, 3.5f));
-
-	mat4 model_torso = model_mat_cpp * instance;
-
-	glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
-	glDrawArrays(GL_TRIANGLES, 0, 36);
-
-	model_mat_cpp = mvstack.pop();
-}
-
-void casemaytinh() {
-	mvstack.push(model_mat_cpp);
-
-	mat4 instance = identity_mat4();
-	instance = translate(vec3(-2, 8.25, 0.25)) *
-		scale(vec3(1.0f, 0.5f, 1.0f)) *
-		rotate_z(90);
-
-	mat4 model_torso = model_mat_cpp * instance;
-
-	glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
-	glDrawArrays(GL_TRIANGLES, 0, 36);
-
-	model_mat_cpp = mvstack.pop();
-}
-
-
-void armScreen1() {
-	mvstack.push(model_mat_cpp);
-
-	mat4 instance = identity_mat4();
-	instance = translate(vec3(0, 0, 0)) *
-		scale(vec3(0.3f, 1.0f, 0.3f));
-
-	mat4 model_torso = model_mat_cpp * instance;
-
-	glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
-	glDrawArrays(GL_TRIANGLES, 0, 36);
-
-	model_mat_cpp = mvstack.pop();
-}
-
-void armScreen2() {
-	mvstack.push(model_mat_cpp);
-
-	mat4 instance = identity_mat4();
-	instance = translate(vec3(0, 0, 0)) *
-		scale(vec3(0.3f, 4.0f, 0.3f));
-
-	mat4 model_torso = model_mat_cpp * instance;
-
-	glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
-	glDrawArrays(GL_TRIANGLES, 0, 36);
-
-	model_mat_cpp = mvstack.pop();
-}
-
-void armScreen3() {
-	mvstack.push(model_mat_cpp);
-
-	mat4 instance = identity_mat4();
-	instance = translate(vec3(0, 0, 0)) *
-		scale(vec3(0.5f, 0.3f, 0.3f));
-
-	mat4 model_torso = model_mat_cpp * instance;
-
-	glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
-	glDrawArrays(GL_TRIANGLES, 0, 36);
-
-	model_mat_cpp = mvstack.pop();
-}
-
-void screen() {
-	mvstack.push(model_mat_cpp);
-
-	mat4 instance = identity_mat4();
-	instance = translate(vec3(0, 0, 0)) *
-		scale(vec3(0.3f, 5.0f, 3.5f));
-
-	mat4 model_torso = model_mat_cpp * instance;
-
-	glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
-	glDrawArrays(GL_TRIANGLES, 0, 36);
-
-	model_mat_cpp = mvstack.pop();
-}
-
-// Vien man hinh
-void _screen() {
-	mvstack.push(model_mat_cpp);
-
-	mat4 instance = identity_mat4();
-	instance = translate(vec3(0, 0, 0)) *
-		scale(vec3(0.1f, 4.8f, 3.3f));
-
-	mat4 model_torso = model_mat_cpp * instance;
-
-	glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
-	glDrawArrays(GL_TRIANGLES, 0, 36);
-
-	model_mat_cpp = mvstack.pop();
-}
-
-void keyboard() {
-	mvstack.push(model_mat_cpp);
-
-	mat4 instance = identity_mat4();
-	instance = translate(vec3(0, 0, 0)) *
-		scale(vec3(4.0f, 0.1f, 2.0f)) * translate(vec3(0, 81, 1.2)) * rotate_x(90) * rotate_z(90);
-
-	mat4 model_torso = model_mat_cpp * instance;
-
-	glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
-	glDrawArrays(GL_TRIANGLES, 0, 36);
-
-	model_mat_cpp = mvstack.pop();
-}
-
-// Mouse
-void mouse() {
-	mvstack.push(model_mat_cpp);
-
-	mat4 instance = identity_mat4();
-	instance = translate(vec3(0, 0, 0)) *
-		scale(vec3(0.5f, 0.5f, 0.8f)) * translate(vec3(-7, 16.5, 3.5)) * rotate_x(90) * rotate_z(90);
-
-	mat4 model_torso = model_mat_cpp * instance;
-
-	glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_torso.m);
-	glDrawArrays(GL_TRIANGLES, 0, 36);
-
-	model_mat_cpp = mvstack.pop();
-
-}
 // ------------------------------------------
 
 // ------------------------------------------
@@ -542,81 +570,78 @@ void DisplayFunc(void)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	// thân
-
-	matsan();
+	Tuong::matsan();
 
 	// matban
-	matban();
+	BanLamViec::matban();
 
 	// Ngan ban
-
 	mvstack.push(model_mat_cpp);
 	model_mat_cpp = model_mat_cpp
 		* translate(vec3(0.0f, 0.0f, theta[NganBan]));
-	nganban();
+	BanLamViec::nganban();
 	model_mat_cpp = mvstack.pop();
-
 
 	// Chan ban 1
 	mvstack.push(model_mat_cpp);
 	model_mat_cpp = model_mat_cpp *
 		translate(vec3(-4.5, 0, 0.0));
-	chanban();
+	BanLamViec::chanban();
 	model_mat_cpp = mvstack.pop();
 
 	// chan ban 2
 	mvstack.push(model_mat_cpp);
 	model_mat_cpp = model_mat_cpp *
 		translate(vec3(-4.5, 0, 4.0));
-	chanban();
+	BanLamViec::chanban();
 	model_mat_cpp = mvstack.pop();
 
 	// Chan ban 3
 	mvstack.push(model_mat_cpp);
 	model_mat_cpp = model_mat_cpp *
 		translate(vec3(4.5, 0, 0.0));
-	chanban();
+	BanLamViec::chanban();
 	model_mat_cpp = mvstack.pop();
 	//// chan ban 4
 	mvstack.push(model_mat_cpp);
 	model_mat_cpp = model_mat_cpp *
 		translate(vec3(4.5, 0, 4.0));
-	chanban();
+	BanLamViec::chanban();
 	model_mat_cpp = mvstack.pop();
 
 
 	// chan ghe dai 1
 	mvstack.push(model_mat_cpp);
 	model_mat_cpp = model_mat_cpp * translate(vec3(0, 0, 0));
-	changhedai();
+	GheNgoi::changhedai();
 	model_mat_cpp = mvstack.pop();
 
 	// chan ghe dai 2
 	mvstack.push(model_mat_cpp);
 	model_mat_cpp = model_mat_cpp * translate(vec3(-3, 0, 0));
-	changhedai();
+	GheNgoi::changhedai();
 	model_mat_cpp = mvstack.pop();
 
 	// tua ghe
-	tuaghe();
+	GheNgoi::tuaghe();
 
 	// chan ghe ngan 1
 	mvstack.push(model_mat_cpp);
 	model_mat_cpp = model_mat_cpp * translate(vec3(0, 0, 0));
-	changhengan();
+	GheNgoi::changhengan();
 	model_mat_cpp = mvstack.pop();
 
 	// chan ghe ngan 2
 	mvstack.push(model_mat_cpp);
 	model_mat_cpp = model_mat_cpp * translate(vec3(-3, 0, 0));
-	changhengan();
+	GheNgoi::changhengan();
 	model_mat_cpp = mvstack.pop();
 
 	// cho ngoi (tren ghe);
-	chongoi();
+	GheNgoi::chongoi();
 
 	// Case may tinh
-	casemaytinh();
+	MayTinh::casemaytinh();
 
 
 	// Arm man hinh duoi
@@ -624,7 +649,7 @@ void DisplayFunc(void)
 	model_mat_cpp = model_mat_cpp * translate(vec3(-5, 8.25, 0.15)) *
 		rotate_y(thetaArmScreen[ArmScr1]);// *
 		// translate(vec3(-5, 8.25, 0.25));
-	armScreen1();
+	MayTinh::armScreen1();
 	model_mat_cpp = mvstack.pop();
 
 	// Arm man hinh tren
@@ -638,7 +663,7 @@ void DisplayFunc(void)
 		translate(vec3(-0.15, 2, -0.15)) *
 		rotate_x(thetaArmScreen[ArmScr2]) *
 		translate(vec3(-0.15, 2, -0.15));*/
-	armScreen2();
+	MayTinh::armScreen2();
 	model_mat_cpp = mvstack.pop();
 
 	// Arm man hinh truoc
@@ -650,7 +675,7 @@ void DisplayFunc(void)
 		translate(vec3(0, -2, 0)) *
 		translate(vec3(0.3, -1.85, 0)) * 
 		rotate_x(thetaArmScreen[ArmScr3]);
-	armScreen3();
+	MayTinh::armScreen3();
 	model_mat_cpp = mvstack.pop();
 
 	// Man hinh
@@ -663,7 +688,7 @@ void DisplayFunc(void)
 		translate(vec3(0.3, -1.85, 0)) *
 		rotate_x(thetaArmScreen[ArmScr3]) *
 		translate(vec3(0.25, 0, -1)) ;
-	screen();
+	MayTinh::screen();
 	model_mat_cpp = mvstack.pop();
 
 	// Vien man hinh
@@ -677,14 +702,14 @@ void DisplayFunc(void)
 		rotate_x(thetaArmScreen[ArmScr3]) *
 		translate(vec3(0.25, 0, -1)) * rotate_y(180) * 
 		translate(vec3(-0.11, 0, 0));
-	_screen();
+	MayTinh::_screen();
 	model_mat_cpp = mvstack.pop();
 	
 	// Ban phim
-	keyboard();
+	MayTinh::keyboard();
 
 	// Chuot
-	mouse();
+	MayTinh::mouse();
 
 
 	glutSwapBuffers();
@@ -789,18 +814,6 @@ void KeyboardFunc(unsigned char key, int x, int y)
 	case '+':
 		thetaArmScreen[angle] -= 8;
 		if (thetaArmScreen[angle] < 0) { thetaArmScreen[angle] += 8; }; break;
-	case '0':
-		nien[0] += 10; break;
-	case '1':
-		nien[0] -= 10; break;
-	case '2':
-		nien[1] += 10; break;
-	case '3':
-		nien[1] -= 10; break;
-	case '4':
-		nien[2] += 10; break;
-	case '5':
-		nien[2] -= 10; break;
 	}
 }
 // ------------------------------------------
@@ -866,6 +879,4 @@ int main(int argc, char* argv[])
 
 	glutMainLoop();
 	return 0;
-}
-
-
+}// Design by Richard
