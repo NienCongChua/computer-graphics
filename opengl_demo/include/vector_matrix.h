@@ -16,169 +16,169 @@ public:
 		struct { float r, g; };
 	};
 
-		// tạo tử
+	// tạo tử
 	vec2() : x(0.0f), y(0.0f) {}
 	~vec2() {}
 	vec2(float num) : x(num), y(num) {}
 	vec2(float x, float y) : x(x), y(y) {}
 	vec2(const vec2& u) : x(u.x), y(u.y) {}
 
-		// toán tử gán
-	vec2& operator = (const vec2& u) 
-	{ 
-		x = u.x; 
-		y = u.y; 
-		return *this; 
+	// toán tử gán
+	vec2& operator = (const vec2& u)
+	{
+		x = u.x;
+		y = u.y;
+		return *this;
 	}
 
-		// toán tử âm
-	vec2 operator - () 
-	{ 
-		return vec2(-x, -y); 
+	// toán tử âm
+	vec2 operator - ()
+	{
+		return vec2(-x, -y);
 	}
 
-		// toán tử lấy địa chỉ
-	float* operator & () 
-	{ 
-		return (float*)this; 
+	// toán tử lấy địa chỉ
+	float* operator & ()
+	{
+		return (float*)this;
 	}
 
-		// toán tử cộng gán với float
-	vec2& operator += (float num) 
-	{ 
-		x += num; 
-		y += num; 
-		return *this; 
+	// toán tử cộng gán với float
+	vec2& operator += (float num)
+	{
+		x += num;
+		y += num;
+		return *this;
 	}
 
-		// toán tử cộng gán với vec2
-	vec2& operator += (const vec2& u) 
-	{ 
-		x += u.x; 
-		y += u.y; 
-		return *this; 
+	// toán tử cộng gán với vec2
+	vec2& operator += (const vec2& u)
+	{
+		x += u.x;
+		y += u.y;
+		return *this;
 	}
 
-		// toán tử trừ gán với float
-	vec2& operator -= (float num) 
-	{ 
-		x -= num; 
-		y -= num; 
-		return *this; 
+	// toán tử trừ gán với float
+	vec2& operator -= (float num)
+	{
+		x -= num;
+		y -= num;
+		return *this;
 	}
 
-		// toán tử trừ gán với vec2
-	vec2& operator -= (const vec2& u) 
-	{ 
-		x -= u.x; 
-		y -= u.y; 
-		return *this; 
+	// toán tử trừ gán với vec2
+	vec2& operator -= (const vec2& u)
+	{
+		x -= u.x;
+		y -= u.y;
+		return *this;
 	}
 
-		// toán tử nhân gán với float
-	vec2& operator *= (float num) 
-	{ 
-		x *= num; 
-		y *= num; 
-		return *this; 
+	// toán tử nhân gán với float
+	vec2& operator *= (float num)
+	{
+		x *= num;
+		y *= num;
+		return *this;
 	}
 
-		// toán tử nhân gán với vec2
-	vec2& operator *= (const vec2& u) 
-	{ 
-		x *= u.x; 
-		y *= u.y; 
-		return *this; 
+	// toán tử nhân gán với vec2
+	vec2& operator *= (const vec2& u)
+	{
+		x *= u.x;
+		y *= u.y;
+		return *this;
 	}
 
-		// toán tử chia gán với float
-	vec2& operator /= (float num) 
-	{ 
-		x /= num; 
-		y /= num; 
-		return *this; 
+	// toán tử chia gán với float
+	vec2& operator /= (float num)
+	{
+		x /= num;
+		y /= num;
+		return *this;
 	}
 
-		// toán tử chia gán với vec2
-	vec2& operator /= (const vec2& u) 
-	{ 
-		x /= u.x; 
-		y /= u.y; 
-		return *this; 
+	// toán tử chia gán với vec2
+	vec2& operator /= (const vec2& u)
+	{
+		x /= u.x;
+		y /= u.y;
+		return *this;
 	}
 
-		// toán tử cộng vec2 với float
-	friend vec2 operator + (const vec2& u, float num) 
-	{ 
-		return vec2(u.x + num, u.y + num); 
+	// toán tử cộng vec2 với float
+	friend vec2 operator + (const vec2& u, float num)
+	{
+		return vec2(u.x + num, u.y + num);
 	}
 
-		// toán tử cộng float với vec2
-	friend vec2 operator + (float num, const vec2& u) 
-	{ 
-		return vec2(num + u.x, num + u.y); 
+	// toán tử cộng float với vec2
+	friend vec2 operator + (float num, const vec2& u)
+	{
+		return vec2(num + u.x, num + u.y);
 	}
 
-		// toán tử cộng vec2 với vec2 
-	friend vec2 operator + (const vec2& u, const vec2& v) 
-	{ 
-		return vec2(u.x + v.x, u.y + v.y); 
+	// toán tử cộng vec2 với vec2 
+	friend vec2 operator + (const vec2& u, const vec2& v)
+	{
+		return vec2(u.x + v.x, u.y + v.y);
 	}
 
-		// toán tử trừ vec2 với float
-	friend vec2 operator - (const vec2& u, float num) 
-	{ 
-		return vec2(u.x - num, u.y - num); 
+	// toán tử trừ vec2 với float
+	friend vec2 operator - (const vec2& u, float num)
+	{
+		return vec2(u.x - num, u.y - num);
 	}
 
-	friend vec2 operator - (float num, const vec2& u) 
-	{ 
-		return vec2(num - u.x, num - u.y); 
+	friend vec2 operator - (float num, const vec2& u)
+	{
+		return vec2(num - u.x, num - u.y);
 	}
 
-		// toán tử trừ vec2 với vec2
-	friend vec2 operator - (const vec2& u, const vec2& v) 
-	{ 
-		return vec2(u.x - v.x, u.y - v.y); 
+	// toán tử trừ vec2 với vec2
+	friend vec2 operator - (const vec2& u, const vec2& v)
+	{
+		return vec2(u.x - v.x, u.y - v.y);
 	}
 
-		// toán tử nhân vec2 với float
-	friend vec2 operator * (const vec2& u, float num) 
-	{ 
-		return vec2(u.x * num, u.y * num); 
+	// toán tử nhân vec2 với float
+	friend vec2 operator * (const vec2& u, float num)
+	{
+		return vec2(u.x * num, u.y * num);
 	}
 
-		// toán tử nhân float với vec2
-	friend vec2 operator * (float num, const vec2& u) 
-	{ 
-		return vec2(num * u.x, num * u.y); 
+	// toán tử nhân float với vec2
+	friend vec2 operator * (float num, const vec2& u)
+	{
+		return vec2(num * u.x, num * u.y);
 	}
 
-		// toán tử nhân vec2 với vec2
-	friend vec2 operator * (const vec2& u, const vec2& v) 
-	{ 
-		return vec2(u.x * v.x, u.y * v.y); 
+	// toán tử nhân vec2 với vec2
+	friend vec2 operator * (const vec2& u, const vec2& v)
+	{
+		return vec2(u.x * v.x, u.y * v.y);
 	}
 
-		// toán tử chia vec2 với float
-	friend vec2 operator / (const vec2& u, float num) 
-	{ 
-		return vec2(u.x / num, u.y / num); 
+	// toán tử chia vec2 với float
+	friend vec2 operator / (const vec2& u, float num)
+	{
+		return vec2(u.x / num, u.y / num);
 	}
 
-		// toán tử chia float với vec2
-	friend vec2 operator / (float num, const vec2& u) 
-	{ 
-		return vec2(num / u.x, num / u.y); 
+	// toán tử chia float với vec2
+	friend vec2 operator / (float num, const vec2& u)
+	{
+		return vec2(num / u.x, num / u.y);
 	}
 
-		// toán tử chia vec2 với vec2
-	friend vec2 operator / (const vec2& u, const vec2& v) 
-	{ 
-		return vec2(u.x / v.x, u.y / v.y); 
+	// toán tử chia vec2 với vec2
+	friend vec2 operator / (const vec2& u, const vec2& v)
+	{
+		return vec2(u.x / v.x, u.y / v.y);
 	}
 };
-	// các hàm
+// các hàm
 float dot(const vec2& u, const vec2& v);
 float length(const vec2& u);
 float length2(const vec2& u);
@@ -188,43 +188,43 @@ vec2 reflect(const vec2& i, const vec2& n);
 vec2 refract(const vec2& i, const vec2& n, float eta);
 vec2 rotate(const vec2& u, float angle);
 
-	// tích vô hướng
+// tích vô hướng
 float dot(const vec2& u, const vec2& v)
 {
 	return u.x * v.x + u.y * v.y;
 }
 
-	// độ dài
+// độ dài
 float length(const vec2& u)
 {
 	return sqrt(u.x * u.x + u.y * u.y);
 }
 
-	// độ dài bp
+// độ dài bp
 float length2(const vec2& u)
 {
 	return u.x * u.x + u.y * u.y;
 }
 
-	//
+//
 vec2 mix(const vec2& u, const vec2& v, float a)
 {
 	return u * (1.0f - a) + v * a;
 }
 
-	// chuẩn hóa
+// chuẩn hóa
 vec2 normalize(const vec2& u)
 {
 	return u / sqrt(u.x * u.x + u.y * u.y);
 }
 
-	//
+//
 vec2 reflect(const vec2& i, const vec2& n)
 {
 	return i - 2.0f * dot(n, i) * n;
 }
 
-	//
+//
 vec2 refract(const vec2& i, const vec2& n, float eta)
 {
 	vec2 r;
@@ -239,7 +239,7 @@ vec2 refract(const vec2& i, const vec2& n, float eta)
 	return r;
 }
 
-	//
+//
 vec2 rotate(const vec2& u, float angle)
 {
 	angle = angle / 180.0f * (float)M_PI;
@@ -249,7 +249,7 @@ vec2 rotate(const vec2& u, float angle)
 	return vec2(u.x * c - u.y * s, u.x * s + u.y * c);
 }
 
-	// Hết định nghĩa kiểu vector 2D
+// Hết định nghĩa kiểu vector 2D
 //-----------------------------------------------
 
 
@@ -272,172 +272,172 @@ public:
 	vec3(const vec2& u, float z) : x(u.x), y(u.y), z(z) {}
 	vec3(const vec3& u) : x(u.x), y(u.y), z(u.z) {}
 
-		// toán tử gán
-	vec3& operator = (const vec3& u) 
-	{ 
-		x = u.x; 
-		y = u.y; 
-		z = u.z; 
-		return *this; 
+	// toán tử gán
+	vec3& operator = (const vec3& u)
+	{
+		x = u.x;
+		y = u.y;
+		z = u.z;
+		return *this;
 	}
 
-		// toán tử âm
-	vec3 operator - () 
-	{ 
-		return vec3(-x, -y, -z); 
+	// toán tử âm
+	vec3 operator - ()
+	{
+		return vec3(-x, -y, -z);
 	}
 
-		// toán tử lấy địa chỉ
-	float* operator & () 
-	{ 
-		return (float*)this; 
+	// toán tử lấy địa chỉ
+	float* operator & ()
+	{
+		return (float*)this;
 	}
 
-		// toán tử cộng gán với float
-	vec3& operator += (float num) 
-	{ 
-		x += num; 
-		y += num; 
-		z += num; 
-		return *this; 
+	// toán tử cộng gán với float
+	vec3& operator += (float num)
+	{
+		x += num;
+		y += num;
+		z += num;
+		return *this;
 	}
 
-		// toán tử cộng gán với vec3
-	vec3& operator += (const vec3& u) 
-	{ 
-		x += u.x; 
-		y += u.y; 
-		z += u.z; 
-		return *this; 
+	// toán tử cộng gán với vec3
+	vec3& operator += (const vec3& u)
+	{
+		x += u.x;
+		y += u.y;
+		z += u.z;
+		return *this;
 	}
 
-		// toán tử trừ gán với float
-	vec3& operator -= (float num) 
-	{ 
-		x -= num; 
-		y -= num; 
-		z -= num; 
-		return *this; 
+	// toán tử trừ gán với float
+	vec3& operator -= (float num)
+	{
+		x -= num;
+		y -= num;
+		z -= num;
+		return *this;
 	}
 
-		// toán tử trừ gán với vec3
-	vec3& operator -= (const vec3& u) 
-	{ 
-		x -= u.x; 
-		y -= u.y; 
-		z -= u.z; 
-		return *this; 
+	// toán tử trừ gán với vec3
+	vec3& operator -= (const vec3& u)
+	{
+		x -= u.x;
+		y -= u.y;
+		z -= u.z;
+		return *this;
 	}
 
-		// toán tử nhân gán với float
-	vec3& operator *= (float num) 
-	{ 
-		x *= num; 
-		y *= num; 
-		z *= num; 
-		return *this; 
+	// toán tử nhân gán với float
+	vec3& operator *= (float num)
+	{
+		x *= num;
+		y *= num;
+		z *= num;
+		return *this;
 	}
 
-		// toán tử nhân gán với vec3
-	vec3& operator *= (const vec3& u) 
-	{ 
-		x *= u.x; 
-		y *= u.y; 
-		z *= u.z; 
-		return *this; 
+	// toán tử nhân gán với vec3
+	vec3& operator *= (const vec3& u)
+	{
+		x *= u.x;
+		y *= u.y;
+		z *= u.z;
+		return *this;
 	}
 
-		// toán tử chia gán với float
-	vec3& operator /= (float num) 
-	{ 
-		x /= num; 
-		y /= num; 
-		z /= num; 
-		return *this; 
+	// toán tử chia gán với float
+	vec3& operator /= (float num)
+	{
+		x /= num;
+		y /= num;
+		z /= num;
+		return *this;
 	}
 
-		// toán tử chia gán với vec3
-	vec3& operator /= (const vec3& u) 
-	{ 
-		x /= u.x; 
-		y /= u.y; 
-		z /= u.z; 
-		return *this; 
+	// toán tử chia gán với vec3
+	vec3& operator /= (const vec3& u)
+	{
+		x /= u.x;
+		y /= u.y;
+		z /= u.z;
+		return *this;
 	}
 
-		// toán tử cộng vec3 với float
-	friend vec3 operator + (const vec3& u, float num) 
-	{ 
-		return vec3(u.x + num, u.y + num, u.z + num); 
+	// toán tử cộng vec3 với float
+	friend vec3 operator + (const vec3& u, float num)
+	{
+		return vec3(u.x + num, u.y + num, u.z + num);
 	}
 
-		// toán tử cộng float với vec3
-	friend vec3 operator + (float num, const vec3& u) 
-	{ 
-		return vec3(num + u.x, num + u.y, num + u.z); 
+	// toán tử cộng float với vec3
+	friend vec3 operator + (float num, const vec3& u)
+	{
+		return vec3(num + u.x, num + u.y, num + u.z);
 	}
 
-		// toán tử cộng vec3 với vec3
-	friend vec3 operator + (const vec3& u, const vec3& v) 
-	{ 
-		return vec3(u.x + v.x, u.y + v.y, u.z + v.z); 
+	// toán tử cộng vec3 với vec3
+	friend vec3 operator + (const vec3& u, const vec3& v)
+	{
+		return vec3(u.x + v.x, u.y + v.y, u.z + v.z);
 	}
 
-		// toán tử trừ vec3 với float
-	friend vec3 operator - (const vec3& u, float num) 
-	{ 
-		return vec3(u.x - num, u.y - num, u.z - num); 
+	// toán tử trừ vec3 với float
+	friend vec3 operator - (const vec3& u, float num)
+	{
+		return vec3(u.x - num, u.y - num, u.z - num);
 	}
 
-		// toán tử trừ float với vec3
-	friend vec3 operator - (float num, const vec3& u) 
-	{ 
-		return vec3(num - u.x, num - u.y, num - u.z); 
+	// toán tử trừ float với vec3
+	friend vec3 operator - (float num, const vec3& u)
+	{
+		return vec3(num - u.x, num - u.y, num - u.z);
 	}
 
-		// toán tử trừ vec3 với vec3
-	friend vec3 operator - (const vec3& u, const vec3& v) 
-	{ 
-		return vec3(u.x - v.x, u.y - v.y, u.z - v.z); 
+	// toán tử trừ vec3 với vec3
+	friend vec3 operator - (const vec3& u, const vec3& v)
+	{
+		return vec3(u.x - v.x, u.y - v.y, u.z - v.z);
 	}
 
-		// toán tử nhân vec3 với float
-	friend vec3 operator * (const vec3& u, float num) 
-	{ 
-		return vec3(u.x * num, u.y * num, u.z * num); 
+	// toán tử nhân vec3 với float
+	friend vec3 operator * (const vec3& u, float num)
+	{
+		return vec3(u.x * num, u.y * num, u.z * num);
 	}
 
-		// toán tử nhân float với vec3
-	friend vec3 operator * (float num, const vec3& u) 
-	{ 
-		return vec3(num * u.x, num * u.y, num * u.z); 
-	}
-		
-		// toán tử nhân vec3 với vec3
-	friend vec3 operator * (const vec3& u, const vec3& v) 
-	{ 
-		return vec3(u.x * v.x, u.y * v.y, u.z * v.z); 
+	// toán tử nhân float với vec3
+	friend vec3 operator * (float num, const vec3& u)
+	{
+		return vec3(num * u.x, num * u.y, num * u.z);
 	}
 
-		// toán tử chia vec3 với float
-	friend vec3 operator / (const vec3& u, float num) 
-	{ 
-		return vec3(u.x / num, u.y / num, u.z / num); 
+	// toán tử nhân vec3 với vec3
+	friend vec3 operator * (const vec3& u, const vec3& v)
+	{
+		return vec3(u.x * v.x, u.y * v.y, u.z * v.z);
 	}
 
-		// toán tử chia float với vec3
-	friend vec3 operator / (float num, const vec3& u) 
-	{ 
-		return vec3(num / u.x, num / u.y, num / u.z); 
+	// toán tử chia vec3 với float
+	friend vec3 operator / (const vec3& u, float num)
+	{
+		return vec3(u.x / num, u.y / num, u.z / num);
 	}
 
-		// toán tử chia vec3 với vec3
-	friend vec3 operator / (const vec3& u, const vec3& v) 
-	{ 
-		return vec3(u.x / v.x, u.y / v.y, u.z / v.z); 
+	// toán tử chia float với vec3
+	friend vec3 operator / (float num, const vec3& u)
+	{
+		return vec3(num / u.x, num / u.y, num / u.z);
+	}
+
+	// toán tử chia vec3 với vec3
+	friend vec3 operator / (const vec3& u, const vec3& v)
+	{
+		return vec3(u.x / v.x, u.y / v.y, u.z / v.z);
 	}
 };
-	// các hàm
+// các hàm
 vec3 cross(const vec3& u, const vec3& v);
 float dot(const vec3& u, const vec3& v);
 float length(const vec3& u);
@@ -448,49 +448,49 @@ vec3 reflect(const vec3& i, const vec3& n);
 vec3 refract(const vec3& i, const vec3& n, float eta);
 vec3 rotate(const vec3& u, float angle, const vec3& v);
 
-	// tích chéo
+// tích chéo
 vec3 cross(const vec3& u, const vec3& v)
 {
 	return vec3(u.y * v.z - u.z * v.y, u.z * v.x - u.x * v.z, u.x * v.y - u.y * v.x);
 }
 
-	// tích điểm
+// tích điểm
 float dot(const vec3& u, const vec3& v)
 {
 	return u.x * v.x + u.y * v.y + u.z * v.z;
 }
 
-	// độ dài
+// độ dài
 float length(const vec3& u)
 {
 	return sqrt(u.x * u.x + u.y * u.y + u.z * u.z);
 }
 
-	// độ dài bp
+// độ dài bp
 float length2(const vec3& u)
 {
 	return u.x * u.x + u.y * u.y + u.z * u.z;
 }
 
-	//
+//
 vec3 mix(const vec3& u, const vec3& v, float a)
 {
 	return u * (1.0f - a) + v * a;
 }
 
-	//
+//
 vec3 normalize(const vec3& u)
 {
 	return u / sqrt(u.x * u.x + u.y * u.y + u.z * u.z);
 }
 
-	// 
+// 
 vec3 reflect(const vec3& i, const vec3& n)
 {
 	return i - 2.0f * dot(n, i) * n;
 }
 
-	//
+//
 vec3 refract(const vec3& i, const vec3& n, float eta)
 {
 	vec3 r;
@@ -522,7 +522,7 @@ public:
 		struct { float s, t, p, q; };
 		struct { float r, g, b, a; };
 	};
-		// tạo tử
+	// tạo tử
 	vec4() : x(0.0f), y(0.0f), z(0.0f), w(0.0f) {}
 	~vec4() {}
 	vec4(float num) : x(num), y(num), z(num), w(num) {}
@@ -531,178 +531,178 @@ public:
 	vec4(const vec3& u, float w) : x(u.x), y(u.y), z(u.z), w(w) {}
 	vec4(const vec4& u) : x(u.x), y(u.y), z(u.z), w(u.w) {}
 
-		// toán tử gán vec4 cho vec4
-	vec4& operator = (const vec4& u) 
-	{ 
-		x = u.x; 
-		y = u.y; 
-		z = u.z; 
-		w = u.w; 
-		return *this; 
+	// toán tử gán vec4 cho vec4
+	vec4& operator = (const vec4& u)
+	{
+		x = u.x;
+		y = u.y;
+		z = u.z;
+		w = u.w;
+		return *this;
 	}
 
-		// toán tử âm
-	vec4 operator - () 
-	{ 
-		return vec4(-x, -y, -z, -w); 
+	// toán tử âm
+	vec4 operator - ()
+	{
+		return vec4(-x, -y, -z, -w);
 	}
 
-		// toán tử lấy địa chỉ
-	float* operator & () 
-	{ 
-		return (float*)this; 
+	// toán tử lấy địa chỉ
+	float* operator & ()
+	{
+		return (float*)this;
 	}
 
-		// toán tử cộng gán với float
-	vec4& operator += (float num) 
-	{ 
-		x += num; 
-		y += num; 
-		z += num; 
-		w += num; 
-		return *this; 
+	// toán tử cộng gán với float
+	vec4& operator += (float num)
+	{
+		x += num;
+		y += num;
+		z += num;
+		w += num;
+		return *this;
 	}
 
-		// toán tử cộng gán với vec4
-	vec4& operator += (const vec4& u) 
-	{ 
-		x += u.x; 
-		y += u.y; 
-		z += u.z; 
-		w += u.w; 
-		return *this; 
+	// toán tử cộng gán với vec4
+	vec4& operator += (const vec4& u)
+	{
+		x += u.x;
+		y += u.y;
+		z += u.z;
+		w += u.w;
+		return *this;
 	}
 
-		// toán tử trừ gán với float
-	vec4& operator -= (float num) 
-	{ 
-		x -= num; 
-		y -= num; 
-		z -= num; 
-		w -= num; 
-		return *this; 
+	// toán tử trừ gán với float
+	vec4& operator -= (float num)
+	{
+		x -= num;
+		y -= num;
+		z -= num;
+		w -= num;
+		return *this;
 	}
 
-		// toán tử trừ gán với vec4
-	vec4& operator -= (const vec4& u) 
-	{ 
-		x -= u.x; 
-		y -= u.y; 
-		z -= u.z; 
-		w -= u.w; 
-		return *this; 
+	// toán tử trừ gán với vec4
+	vec4& operator -= (const vec4& u)
+	{
+		x -= u.x;
+		y -= u.y;
+		z -= u.z;
+		w -= u.w;
+		return *this;
 	}
 
-		// toán tử nhân gán với float
-	vec4& operator *= (float num) 
-	{ 
-		x *= num; 
-		y *= num; 
-		z *= num; 
-		w *= num; 
-		return *this; 
+	// toán tử nhân gán với float
+	vec4& operator *= (float num)
+	{
+		x *= num;
+		y *= num;
+		z *= num;
+		w *= num;
+		return *this;
 	}
 
-		// toán tử nhân gán với vec4
-	vec4& operator *= (const vec4& u) 
-	{ 
-		x *= u.x; 
-		y *= u.y; 
-		z *= u.z; 
-		w *= u.w; 
-		return *this; 
+	// toán tử nhân gán với vec4
+	vec4& operator *= (const vec4& u)
+	{
+		x *= u.x;
+		y *= u.y;
+		z *= u.z;
+		w *= u.w;
+		return *this;
 	}
 
-		// toán tử chia gán với float
-	vec4& operator /= (float num) 
-	{ 
-		x /= num; 
-		y /= num; 
-		z /= num; 
-		w /= num; 
-		return *this; 
+	// toán tử chia gán với float
+	vec4& operator /= (float num)
+	{
+		x /= num;
+		y /= num;
+		z /= num;
+		w /= num;
+		return *this;
 	}
 
-		// toán tử chia gán với vec4
-	vec4& operator /= (const vec4& u) 
-	{ 
-		x /= u.x; 
-		y /= u.y; 
-		z /= u.z; 
-		w /= u.w; 
-		return *this; 
+	// toán tử chia gán với vec4
+	vec4& operator /= (const vec4& u)
+	{
+		x /= u.x;
+		y /= u.y;
+		z /= u.z;
+		w /= u.w;
+		return *this;
 	}
 
-		// toán tử cộng vec4 với float
-	friend vec4 operator + (const vec4& u, float num) 
-	{ 
-		return vec4(u.x + num, u.y + num, u.z + num, u.w + num); 
+	// toán tử cộng vec4 với float
+	friend vec4 operator + (const vec4& u, float num)
+	{
+		return vec4(u.x + num, u.y + num, u.z + num, u.w + num);
 	}
 
-		// toán tử cộng float với vec4
-	friend vec4 operator + (float num, const vec4& u) 
-	{ 
-		return vec4(num + u.x, num + u.y, num + u.z, num + u.w); 
+	// toán tử cộng float với vec4
+	friend vec4 operator + (float num, const vec4& u)
+	{
+		return vec4(num + u.x, num + u.y, num + u.z, num + u.w);
 	}
 
-		// toán tử cộng vec4 với vec4
-	friend vec4 operator + (const vec4& u, const vec4& v) 
-	{ 
-		return vec4(u.x + v.x, u.y + v.y, u.z + v.z, u.w + v.w); 
+	// toán tử cộng vec4 với vec4
+	friend vec4 operator + (const vec4& u, const vec4& v)
+	{
+		return vec4(u.x + v.x, u.y + v.y, u.z + v.z, u.w + v.w);
 	}
 
-		// toán tử trừ vec4 với float
-	friend vec4 operator - (const vec4& u, float num) 
-	{ 
-		return vec4(u.x - num, u.y - num, u.z - num, u.w - num); 
+	// toán tử trừ vec4 với float
+	friend vec4 operator - (const vec4& u, float num)
+	{
+		return vec4(u.x - num, u.y - num, u.z - num, u.w - num);
 	}
 
-		// toán tử trừ float với vec4
-	friend vec4 operator - (float num, const vec4& u) 
-	{ 
-		return vec4(num - u.x, num - u.y, num - u.z, num - u.w); 
+	// toán tử trừ float với vec4
+	friend vec4 operator - (float num, const vec4& u)
+	{
+		return vec4(num - u.x, num - u.y, num - u.z, num - u.w);
 	}
 
-		// toán tử trừ vec4 với vec4
-	friend vec4 operator - (const vec4& u, const vec4& v) 
-	{ 
-		return vec4(u.x - v.x, u.y - v.y, u.z - v.z, u.w - v.w); 
+	// toán tử trừ vec4 với vec4
+	friend vec4 operator - (const vec4& u, const vec4& v)
+	{
+		return vec4(u.x - v.x, u.y - v.y, u.z - v.z, u.w - v.w);
 	}
 
-		// toán tử nhân vec4 với float
-	friend vec4 operator * (const vec4& u, float num) 
-	{ 
-		return vec4(u.x * num, u.y * num, u.z * num, u.w * num); 
+	// toán tử nhân vec4 với float
+	friend vec4 operator * (const vec4& u, float num)
+	{
+		return vec4(u.x * num, u.y * num, u.z * num, u.w * num);
 	}
 
-		// toán tử nhân float với vec4
-	friend vec4 operator * (float num, const vec4& u) 
-	{ 
-		return vec4(num * u.x, num * u.y, num * u.z, num * u.w); 
+	// toán tử nhân float với vec4
+	friend vec4 operator * (float num, const vec4& u)
+	{
+		return vec4(num * u.x, num * u.y, num * u.z, num * u.w);
 	}
 
-		// toán tử nhân vec4 với vec4
-	friend vec4 operator * (const vec4& u, const vec4& v) 
-	{ 
-		return vec4(u.x * v.x, u.y * v.y, u.z * v.z, u.w * v.w); 
+	// toán tử nhân vec4 với vec4
+	friend vec4 operator * (const vec4& u, const vec4& v)
+	{
+		return vec4(u.x * v.x, u.y * v.y, u.z * v.z, u.w * v.w);
 	}
 
-		// toán tử chia vec4 với float
-	friend vec4 operator / (const vec4& u, float num) 
-	{ 
-		return vec4(u.x / num, u.y / num, u.z / num, u.w / num); 
+	// toán tử chia vec4 với float
+	friend vec4 operator / (const vec4& u, float num)
+	{
+		return vec4(u.x / num, u.y / num, u.z / num, u.w / num);
 	}
 
-		// toán tử chia float với vec4
-	friend vec4 operator / (float num, const vec4& u) 
-	{ 
-		return vec4(num / u.x, num / u.y, num / u.z, num / u.w); 
+	// toán tử chia float với vec4
+	friend vec4 operator / (float num, const vec4& u)
+	{
+		return vec4(num / u.x, num / u.y, num / u.z, num / u.w);
 	}
 
-		// toán tử chia vec4 với vec4
-	friend vec4 operator / (const vec4& u, const vec4& v) 
-	{ 
-		return vec4(u.x / v.x, u.y / v.y, u.z / v.z, u.w / v.w); 
+	// toán tử chia vec4 với vec4
+	friend vec4 operator / (const vec4& u, const vec4& v)
+	{
+		return vec4(u.x / v.x, u.y / v.y, u.z / v.z, u.w / v.w);
 	}
 };
 
@@ -739,19 +739,19 @@ public:
 mat2 inverse(const mat2& a);
 mat2 transpose(const mat2& b);
 
-	// tạo mat2 đơn vị
+// tạo mat2 đơn vị
 mat2::mat2()
 {
 	m[0] = 1.0f;	m[2] = 0.0f;
 	m[1] = 0.0f;	m[3] = 1.0f;
 }
 
-	// hủy tử
+// hủy tử
 mat2::~mat2()
 {
 }
 
-	// tạo mat2 từ mat2
+// tạo mat2 từ mat2
 mat2::mat2(const mat2& a)
 {
 	for (int i = 0; i < 4; i++)
@@ -760,14 +760,14 @@ mat2::mat2(const mat2& a)
 	}
 }
 
-	// tạo mat2 từ 2 vec2
+// tạo mat2 từ 2 vec2
 mat2::mat2(const vec2& a, const vec2& b)
 {
 	m[0] = a.x;		m[2] = b.x;
 	m[1] = a.y;		m[3] = b.y;
 }
 
-	// tạo mat2 từ 4 float
+// tạo mat2 từ 4 float
 mat2::mat2(float a0, float a1, float a2, float a3)
 {
 	m[0] = a0;	m[2] = a2;
@@ -786,7 +786,7 @@ mat2::mat2(float a0, float a1, float a2, float a3)
 	m[1] = a.m[1]; m[3] = a.m[5];
 }*/
 
-	// toán tử gán
+// toán tử gán
 mat2& mat2::operator = (const mat2& a)
 {
 	for (int i = 0; i < 4; i++)
@@ -797,50 +797,50 @@ mat2& mat2::operator = (const mat2& a)
 	return *this;
 }
 
-	// toán tử lấy giá trị 1 phần tử
+// toán tử lấy giá trị 1 phần tử
 float& mat2::operator [] (int i)
 {
 	return m[i];
 }
 
-	// toán tử lấy địa chỉ
+// toán tử lấy địa chỉ
 float* mat2::operator & ()
 {
 	return (float*)this;
 }
 
-	// toán tử nhân mat2 với mat2
-	/*
-		a = [a0, a1, a2, a3]
-		b = [b0, b1, b2, b3]
+// toán tử nhân mat2 với mat2
+/*
+	a = [a0, a1, a2, a3]
+	b = [b0, b1, b2, b3]
 
-		a0	a2		b0	b2		a0*b0 + a2*b1	a0*b2 + a2*b3
-				x			=
-		a1	a3		b1	b3		a1*b0 + a3*b1	a1*b2 + a3*b3	
+	a0	a2		b0	b2		a0*b0 + a2*b1	a0*b2 + a2*b3
+			x			=
+	a1	a3		b1	b3		a1*b0 + a3*b1	a1*b2 + a3*b3
 
-		c = [a0*b0 + a2*b1, a1*b0 + a3*b1, a0*b2 + a2*b3, a1*b2 + a3*b3]
-	*/
+	c = [a0*b0 + a2*b1, a1*b0 + a3*b1, a0*b2 + a2*b3, a1*b2 + a3*b3]
+*/
 mat2 operator * (const mat2& a, const mat2& b)
 {
 	mat2 m3;
 
 	m3.m[0] = a.m[0] * b.m[0] + a.m[2] * b.m[1];	m3.m[2] = a.m[0] * b.m[2] + a.m[2] * b.m[3];
-	m3.m[1] = a.m[1] * b.m[0] + a.m[3] * b.m[1];	m3.m[3] = a.m[1] * b.m[2] + a.m[3] * b.m[3];	
+	m3.m[1] = a.m[1] * b.m[0] + a.m[3] * b.m[1];	m3.m[3] = a.m[1] * b.m[2] + a.m[3] * b.m[3];
 
 	return m3;
 }
 
-	// toán tử nhân mat2 với vec2
-	/*
-		a = [a0, a1, a2, a3]
-		b = [x, y]
+// toán tử nhân mat2 với vec2
+/*
+	a = [a0, a1, a2, a3]
+	b = [x, y]
 
-		a0	a2		x			a0*x + a2*y	
-				x			=
-		a1	a3		y			a1*x + a3*y	
+	a0	a2		x			a0*x + a2*y
+			x			=
+	a1	a3		y			a1*x + a3*y
 
-		c = [a0*x + a2*y, a1*x + a3*y]
-	*/
+	c = [a0*x + a2*y, a1*x + a3*y]
+*/
 vec2 operator * (const mat2& m, const vec2& u)
 {
 	vec2 v;
@@ -850,19 +850,19 @@ vec2 operator * (const mat2& m, const vec2& u)
 
 	return v;
 }
-	// Hết định nghĩa kiểu ma trận 2x2
+// Hết định nghĩa kiểu ma trận 2x2
 //-----------------------------------------------
 
 class mat3
 {
 public:
-		//Dữ liệu nội bộ
-		/* m[9] = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-		Biểu diễn dạng cột như sau:
-		0  3  6
-		1  4  7
-		2  5  8
-		*/
+	//Dữ liệu nội bộ
+	/* m[9] = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+	Biểu diễn dạng cột như sau:
+	0  3  6
+	1  4  7
+	2  5  8
+	*/
 	float m[9];
 
 	mat3();
@@ -872,7 +872,7 @@ public:
 	mat3(float a0, float a1, float a2, float a3, float a4, float a5, float a6, float a7, float a8);
 	explicit mat3(const mat2& m1);
 	explicit mat3(const mat4& m1);
-	
+
 	mat3& operator = (const mat3& m1);
 	float& operator [] (int i);
 	float* operator & ();
@@ -882,7 +882,7 @@ public:
 mat3 inverse(const mat3& m1);
 mat3 transpose(const mat3& m1);
 
-	// tạo mat3 đơn vị	
+// tạo mat3 đơn vị	
 mat3::mat3()
 {
 	m[0] = 1.0f;	m[3] = 0.0f;	m[6] = 0.0f;
@@ -890,12 +890,12 @@ mat3::mat3()
 	m[2] = 0.0f;	m[5] = 0.0f;	m[8] = 1.0f;
 }
 
-	// hủy tử
+// hủy tử
 mat3::~mat3()
 {
 }
 
-	// tạo mat3 từ mat3
+// tạo mat3 từ mat3
 mat3::mat3(const mat3& a)
 {
 	for (int i = 0; i < 9; i++)
@@ -904,7 +904,7 @@ mat3::mat3(const mat3& a)
 	}
 }
 
-	// tạo mat3 từ 3 vec3
+// tạo mat3 từ 3 vec3
 mat3::mat3(const vec3& a, const vec3& b, const vec3& c)
 {
 	m[0] = a.x;		m[3] = b.x;		m[6] = c.x;
@@ -912,7 +912,7 @@ mat3::mat3(const vec3& a, const vec3& b, const vec3& c)
 	m[2] = a.z;		m[5] = b.z;		m[8] = c.z;
 }
 
-	// tạo mat3 từ 9 float
+// tạo mat3 từ 9 float
 mat3::mat3(float a0, float a1, float a2, float a3, float a4, float a5, float a6, float a7, float a8)
 {
 	m[0] = a0;	m[3] = a3;	m[6] = a6;
@@ -920,7 +920,7 @@ mat3::mat3(float a0, float a1, float a2, float a3, float a4, float a5, float a6,
 	m[2] = a2;	m[5] = a5;	m[8] = a8;
 }
 
-	// tạo mat3 từ mat2
+// tạo mat3 từ mat2
 mat3::mat3(const mat2& a)
 {
 	m[0] = a.m[0];		m[3] = a.m[2];		m[6] = 0.0f;
@@ -935,7 +935,7 @@ mat3::mat3(const mat2& a)
 	m[2] = m1.m[2]; m[5] = m1.m[6]; m[8] = m1.m[10];
 }*/
 
-	// toán tử gán
+// toán tử gán
 mat3& mat3::operator = (const mat3& a)
 {
 	for (int i = 0; i < 9; i++)
@@ -946,31 +946,31 @@ mat3& mat3::operator = (const mat3& a)
 	return *this;
 }
 
-	// toán tử lấy giá trị phần tử của mat3
+// toán tử lấy giá trị phần tử của mat3
 float& mat3::operator [] (int i)
 {
 	return m[i];
 }
 
-	// toán tử lấy địa chỉ
+// toán tử lấy địa chỉ
 float* mat3::operator & ()
 {
 	return (float*)this;
 }
 
-	// toán tử nhân mat3 với mat3
-	/*
-		a = [a0, a1, a2, a3, a4, a5, a6, a7, a8]
-		b = [b0, b1, b2, b3, b4, b5, b6, b7, b8]
+// toán tử nhân mat3 với mat3
+/*
+	a = [a0, a1, a2, a3, a4, a5, a6, a7, a8]
+	b = [b0, b1, b2, b3, b4, b5, b6, b7, b8]
 
-		a0	a3	a6		b0	b3	b6		a0*b0 + a3*b1 + a6*b2	a0*b3 + a3*b4 + a6*b5	a0*b6 + a3*b7 + a6*b8
-									
-		a1	a4	a7	x	b1	b4	b7	=	a1*b0 + a4*b1 + a7*b2	a1*b3 + a4*b4 + a7*b5	a1*b6 + a4*b7 + a7*b8
+	a0	a3	a6		b0	b3	b6		a0*b0 + a3*b1 + a6*b2	a0*b3 + a3*b4 + a6*b5	a0*b6 + a3*b7 + a6*b8
 
-		a2	a5	a8		b2	b5	b8		a2*b0 + a5*b1 + a8*b2	a2*b3 + a5*b4 + a8*b5	a2*b6 + a5*b7 + a8*b8
+	a1	a4	a7	x	b1	b4	b7	=	a1*b0 + a4*b1 + a7*b2	a1*b3 + a4*b4 + a7*b5	a1*b6 + a4*b7 + a7*b8
 
-		c = [a0*b0 + a3*b1 + a6*b2, a1*b0 + a4*b1 + a7*b2, a2*b0 + a5*b1 + a8*b2, a0*b3 + a3*b4 + a6*b5, a1*b3 + a4*b4 + a7*b5, a2*b3 + a5*b4 + a8*b5,a0*b6 + a3*b7 + a6*b8,a1*b6 + a4*b7 + a7*b8,a2*b6 + a5*b7 + a8*b8]
-	*/
+	a2	a5	a8		b2	b5	b8		a2*b0 + a5*b1 + a8*b2	a2*b3 + a5*b4 + a8*b5	a2*b6 + a5*b7 + a8*b8
+
+	c = [a0*b0 + a3*b1 + a6*b2, a1*b0 + a4*b1 + a7*b2, a2*b0 + a5*b1 + a8*b2, a0*b3 + a3*b4 + a6*b5, a1*b3 + a4*b4 + a7*b5, a2*b3 + a5*b4 + a8*b5,a0*b6 + a3*b7 + a6*b8,a1*b6 + a4*b7 + a7*b8,a2*b6 + a5*b7 + a8*b8]
+*/
 mat3 operator * (const mat3& a, const mat3& b)
 {
 	mat3 c;
@@ -990,7 +990,7 @@ mat3 operator * (const mat3& a, const mat3& b)
 	return c;
 }
 
-	// toán tử nhân mat3 với vec3
+// toán tử nhân mat3 với vec3
 vec3 operator * (const mat3& a, const vec3& u)
 {
 	vec3 v;
@@ -1050,12 +1050,12 @@ mat3 transpose(const mat3& m1)
 	return t;
 }
 
-	// tạo ma trận 0
+// tạo ma trận 0
 mat3 zero_mat3() {
 	return mat3(
-				0.0f, 0.0f, 0.0f,
-				0.0f, 0.0f, 0.0f,
-				0.0f, 0.0f, 0.0f);
+		0.0f, 0.0f, 0.0f,
+		0.0f, 0.0f, 0.0f,
+		0.0f, 0.0f, 0.0f);
 }
 
 //Hết định nghĩa kiểu ma trận 3x3
@@ -1076,7 +1076,7 @@ public:
 	*/
 	float m[16];
 
-		// tạo tử và hủy tử
+	// tạo tử và hủy tử
 	mat4();
 	~mat4();
 	mat4(const mat4& a);
@@ -1084,8 +1084,8 @@ public:
 	mat4(float a0, float a1, float a2, float a3, float a4, float a5, float a6, float a7, float a8, float a9, float a10, float a11, float a12, float a13, float a14, float a15);
 	explicit mat4(const mat2& a);
 	explicit mat4(const mat3& a);
-	
-		// toán tử
+
+	// toán tử
 	mat4& operator = (const mat4& a);
 	float& operator [] (int i);
 	float* operator & ();
@@ -1095,7 +1095,7 @@ public:
 extern mat4 BiasMatrix;
 extern mat4 BiasMatrixInverse;
 
-	// khởi tạo mat4 đơn vị
+// khởi tạo mat4 đơn vị
 mat4::mat4()
 {
 	m[0] = 1.0f;	m[4] = 0.0f;	m[8] = 0.0f;	m[12] = 0.0f;
@@ -1104,12 +1104,12 @@ mat4::mat4()
 	m[3] = 0.0f;	m[7] = 0.0f;	m[11] = 0.0f;	m[15] = 1.0f;
 }
 
-	// hủy tử
+// hủy tử
 mat4::~mat4()
 {
 }
 
-	// tạo mat4 từ mat4
+// tạo mat4 từ mat4
 mat4::mat4(const mat4& a)
 {
 	for (int i = 0; i < 16; i++)
@@ -1118,7 +1118,7 @@ mat4::mat4(const mat4& a)
 	}
 }
 
-	// tạo mat4 từ 4 vec4
+// tạo mat4 từ 4 vec4
 mat4::mat4(const vec4& a, const vec4& b, const vec4& c, const vec4& d)
 {
 	m[0] = a.x;		m[4] = b.x;		m[8] = c.x;		m[12] = d.x;
@@ -1127,11 +1127,11 @@ mat4::mat4(const vec4& a, const vec4& b, const vec4& c, const vec4& d)
 	m[3] = a.w;		m[7] = b.w;		m[11] = c.w;	m[15] = d.w;
 }
 
-	// tạo mat4 từ 16 giá trị thực
-mat4:: mat4(float a0,	float a1,	float a2,	float a3,
-			float a4,	float a5,	float a6,	float a7,
-			float a8,	float a9,	float a10,	float a11,
-			float a12,	float a13,	float a14,	float a15)
+// tạo mat4 từ 16 giá trị thực
+mat4::mat4(float a0, float a1, float a2, float a3,
+	float a4, float a5, float a6, float a7,
+	float a8, float a9, float a10, float a11,
+	float a12, float a13, float a14, float a15)
 {
 	// opengl đọc dạng cột, 4 phần tử liên tiếp trong mảng 1 chiều tạo thành 1 cột
 	m[0] = a0;		m[4] = a4;		m[8] = a8;		m[12] = a12;
@@ -1140,7 +1140,7 @@ mat4:: mat4(float a0,	float a1,	float a2,	float a3,
 	m[3] = a3;		m[7] = a7;		m[11] = a11;	m[15] = a15;
 }
 
-	// tạo mat4 từ 1 mat2
+// tạo mat4 từ 1 mat2
 mat4::mat4(const mat2& a)
 {
 	m[0] = a.m[0];		m[4] = a.m[2];		m[8] = 0.0f;	m[12] = 0.0f;
@@ -1149,16 +1149,16 @@ mat4::mat4(const mat2& a)
 	m[3] = 0.0f;		m[7] = 0.0f;		m[11] = 0.0f;	m[15] = 1.0f;
 }
 
-	// tạo mat4 từ 1 mat3
+// tạo mat4 từ 1 mat3
 mat4::mat4(const mat3& a)
 {
-	m[0] = a.m[0];		m[4] = a.m[3];		m[8]  = a.m[6];		m[12] = 0.0f;
-	m[1] = a.m[1];		m[5] = a.m[4];		m[9]  = a.m[7];		m[13] = 0.0f;
+	m[0] = a.m[0];		m[4] = a.m[3];		m[8] = a.m[6];		m[12] = 0.0f;
+	m[1] = a.m[1];		m[5] = a.m[4];		m[9] = a.m[7];		m[13] = 0.0f;
 	m[2] = a.m[2];		m[6] = a.m[5];		m[10] = a.m[8];		m[14] = 0.0f;
 	m[3] = 0.0f;		m[7] = 0.0f;		m[11] = 0.0f;		m[15] = 1.0f;
 }
 
-	// toán tử gán mat4 cho mat4
+// toán tử gán mat4 cho mat4
 mat4& mat4::operator = (const mat4& a)
 {
 	for (int i = 0; i < 16; i++)
@@ -1169,25 +1169,25 @@ mat4& mat4::operator = (const mat4& a)
 	return *this;
 }
 
-	// toán tử lấy giá trị phần tử mat4[i]
+// toán tử lấy giá trị phần tử mat4[i]
 float& mat4::operator [] (int i)
 {
 	return m[i];
 }
 
-	// toán tử lấy địa chỉ
+// toán tử lấy địa chỉ
 float* mat4::operator & ()
 {
 	return (float*)this;
 }
 
-	// tạo mat4 0
+// tạo mat4 0
 mat4 zero_mat4() {
 	return mat4(
-				0.0f, 0.0f, 0.0f, 0.0f,
-				0.0f, 0.0f, 0.0f, 0.0f,
-				0.0f, 0.0f, 0.0f, 0.0f,
-				0.0f, 0.0f, 0.0f, 0.0f);
+		0.0f, 0.0f, 0.0f, 0.0f,
+		0.0f, 0.0f, 0.0f, 0.0f,
+		0.0f, 0.0f, 0.0f, 0.0f,
+		0.0f, 0.0f, 0.0f, 0.0f);
 }
 
 // tạo mat4 đơn vị
@@ -1198,44 +1198,44 @@ mat4 identity_mat4() {
 		0.0f, 0.0f, 1.0f, 0.0f,
 		0.0f, 0.0f, 0.0f, 1.0f);
 }
-	// toán tử nhân mat4 với mat4
-	/*
-		a = [a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15 ]
-		b = [b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15 ]
+// toán tử nhân mat4 với mat4
+/*
+	a = [a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15 ]
+	b = [b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15 ]
 
-		a0	a4	a8		a12				b0	b4	b8		b12		
+	a0	a4	a8		a12				b0	b4	b8		b12
 
-		a1	a5	a9		a13				b1	b5	b9		b13	
-								x
-		a2	a6	a10		a14				b2	b6	b10		b14
+	a1	a5	a9		a13				b1	b5	b9		b13
+							x
+	a2	a6	a10		a14				b2	b6	b10		b14
 
-		a3	a7	a11		a15				b3	b7	b11		b15
+	a3	a7	a11		a15				b3	b7	b11		b15
 
 
-	*/
+*/
 mat4 operator * (const mat4& a, const mat4& b)
 {
 	mat4 m3;
 
-	m3.m[0]  = a.m[0] * b.m[0]  + a.m[4] * b.m[1]  + a.m[8]   * b.m[2]  + a.m[12] * b.m[3];
-	m3.m[1]  = a.m[1] * b.m[0]  + a.m[5] * b.m[1]  + a.m[9]   * b.m[2]  + a.m[13] * b.m[3];
-	m3.m[2]  = a.m[2] * b.m[0]  + a.m[6] * b.m[1]  + a.m[10]  * b.m[2]  + a.m[14] * b.m[3];
-	m3.m[3]  = a.m[3] * b.m[0]  + a.m[7] * b.m[1]  + a.m[11]  * b.m[2]  + a.m[15] * b.m[3];
+	m3.m[0] = a.m[0] * b.m[0] + a.m[4] * b.m[1] + a.m[8] * b.m[2] + a.m[12] * b.m[3];
+	m3.m[1] = a.m[1] * b.m[0] + a.m[5] * b.m[1] + a.m[9] * b.m[2] + a.m[13] * b.m[3];
+	m3.m[2] = a.m[2] * b.m[0] + a.m[6] * b.m[1] + a.m[10] * b.m[2] + a.m[14] * b.m[3];
+	m3.m[3] = a.m[3] * b.m[0] + a.m[7] * b.m[1] + a.m[11] * b.m[2] + a.m[15] * b.m[3];
 
-	m3.m[4]  = a.m[0] * b.m[4]  + a.m[4] * b.m[5]  + a.m[8]   * b.m[6]  + a.m[12] * b.m[7];
-	m3.m[5]  = a.m[1] * b.m[4]  + a.m[5] * b.m[5]  + a.m[9]   * b.m[6]  + a.m[13] * b.m[7];
-	m3.m[6]  = a.m[2] * b.m[4]  + a.m[6] * b.m[5]  + a.m[10]  * b.m[6]  + a.m[14] * b.m[7];
-	m3.m[7]  = a.m[3] * b.m[4]  + a.m[7] * b.m[5]  + a.m[11]  * b.m[6]  + a.m[15] * b.m[7];
+	m3.m[4] = a.m[0] * b.m[4] + a.m[4] * b.m[5] + a.m[8] * b.m[6] + a.m[12] * b.m[7];
+	m3.m[5] = a.m[1] * b.m[4] + a.m[5] * b.m[5] + a.m[9] * b.m[6] + a.m[13] * b.m[7];
+	m3.m[6] = a.m[2] * b.m[4] + a.m[6] * b.m[5] + a.m[10] * b.m[6] + a.m[14] * b.m[7];
+	m3.m[7] = a.m[3] * b.m[4] + a.m[7] * b.m[5] + a.m[11] * b.m[6] + a.m[15] * b.m[7];
 
-	m3.m[8]  = a.m[0] * b.m[8]  + a.m[4] * b.m[9]  + a.m[8]   * b.m[10] + a.m[12] * b.m[11];
-	m3.m[9]  = a.m[1] * b.m[8]  + a.m[5] * b.m[9]  + a.m[9]   * b.m[10] + a.m[13] * b.m[11];
-	m3.m[10] = a.m[2] * b.m[8]  + a.m[6] * b.m[9]  + a.m[10]  * b.m[10] + a.m[14] * b.m[11];
-	m3.m[11] = a.m[3] * b.m[8]  + a.m[7] * b.m[9]  + a.m[11]  * b.m[10] + a.m[15] * b.m[11];
+	m3.m[8] = a.m[0] * b.m[8] + a.m[4] * b.m[9] + a.m[8] * b.m[10] + a.m[12] * b.m[11];
+	m3.m[9] = a.m[1] * b.m[8] + a.m[5] * b.m[9] + a.m[9] * b.m[10] + a.m[13] * b.m[11];
+	m3.m[10] = a.m[2] * b.m[8] + a.m[6] * b.m[9] + a.m[10] * b.m[10] + a.m[14] * b.m[11];
+	m3.m[11] = a.m[3] * b.m[8] + a.m[7] * b.m[9] + a.m[11] * b.m[10] + a.m[15] * b.m[11];
 
-	m3.m[12] = a.m[0] * b.m[12] + a.m[4] * b.m[13] + a.m[8]   * b.m[14] + a.m[12] * b.m[15];
-	m3.m[13] = a.m[1] * b.m[12] + a.m[5] * b.m[13] + a.m[9]   * b.m[14] + a.m[13] * b.m[15];
-	m3.m[14] = a.m[2] * b.m[12] + a.m[6] * b.m[13] + a.m[10]  * b.m[14] + a.m[14] * b.m[15];
-	m3.m[15] = a.m[3] * b.m[12] + a.m[7] * b.m[13] + a.m[11]  * b.m[14] + a.m[15] * b.m[15];
+	m3.m[12] = a.m[0] * b.m[12] + a.m[4] * b.m[13] + a.m[8] * b.m[14] + a.m[12] * b.m[15];
+	m3.m[13] = a.m[1] * b.m[12] + a.m[5] * b.m[13] + a.m[9] * b.m[14] + a.m[13] * b.m[15];
+	m3.m[14] = a.m[2] * b.m[12] + a.m[6] * b.m[13] + a.m[10] * b.m[14] + a.m[14] * b.m[15];
+	m3.m[15] = a.m[3] * b.m[12] + a.m[7] * b.m[13] + a.m[11] * b.m[14] + a.m[15] * b.m[15];
 
 	return m3;
 }
@@ -1258,13 +1258,13 @@ mat4 operator*(const mat4& a) {
 	return r;
 }*/
 
-	// toán tử nhân mat4 với vec4
+// toán tử nhân mat4 với vec4
 vec4 operator * (const mat4& a, const vec4& u)
 {
 	vec4 v;
 
-	v.x = a.m[0] * u.x + a.m[4] * u.y + a.m[8]  * u.z + a.m[12] * u.w;
-	v.y = a.m[1] * u.x + a.m[5] * u.y + a.m[9]  * u.z + a.m[13] * u.w;
+	v.x = a.m[0] * u.x + a.m[4] * u.y + a.m[8] * u.z + a.m[12] * u.w;
+	v.y = a.m[1] * u.x + a.m[5] * u.y + a.m[9] * u.z + a.m[13] * u.w;
 	v.z = a.m[2] * u.x + a.m[6] * u.y + a.m[10] * u.z + a.m[14] * u.w;
 	v.w = a.m[3] * u.x + a.m[7] * u.y + a.m[11] * u.z + a.m[15] * u.w;
 
@@ -1322,7 +1322,7 @@ mat4 inverse(const mat4& m1)
 	return Inverse;
 }
 
-	// chuyển vị
+// chuyển vị
 mat4 transpose(const mat4& a)
 {
 	mat4 t;
@@ -1355,14 +1355,14 @@ mat4 transpose(const mat4& a)
 	2  6 10 14
 	3  7 11 15
 	*/
-// Hàm tạo ma trận tịnh tiến với đầu vào là vec3(x y z)
-	// cách 1
+	// Hàm tạo ma trận tịnh tiến với đầu vào là vec3(x y z)
+		// cách 1
 mat4 translate(const vec3& tv) {
 	return mat4(
-		1.0f,		0.0f,		0.0f,		0.0f,
-		0.0f,		1.0f,		0.0f,		0.0f,
-		0.0f,		0.0f,		1.0f,		0.0f,
-		tv.x,		tv.y,		tv.z,		1.0);
+		1.0f, 0.0f, 0.0f, 0.0f,
+		0.0f, 1.0f, 0.0f, 0.0f,
+		0.0f, 0.0f, 1.0f, 0.0f,
+		tv.x, tv.y, tv.z, 1.0);
 
 	/* opengl đọc
 		1.0f		0.0f	0.0f	tv.v[0]
@@ -1370,7 +1370,7 @@ mat4 translate(const vec3& tv) {
 		0.0f		0.0f	1.0f	tv.v[2]
 		0.0f		0.0f	0.0f	1.0f
 	*/
-}	
+}
 //---------------------------------------------------------------
 
 /* m[16] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
@@ -1380,26 +1380,26 @@ mat4 translate(const vec3& tv) {
 	2  6 10 14
 	3  7 11 15
 	*/
-// Hàm quay tạo ma trận quanh trục x 4x4 với góc quay tính bằng độ
-/*		1.0,	0.0,			 0.0f,		0.0f,
-		0.0,	cosf(deg),	-sinf(deg),		0.0f,
-		0.0f,	sinf(deg),	 cosf(deg),		0.0f,
-		0.0f,	0.0f,			 0.0f,		1.0f */
+	// Hàm quay tạo ma trận quanh trục x 4x4 với góc quay tính bằng độ
+	/*		1.0,	0.0,			 0.0f,		0.0f,
+			0.0,	cosf(deg),	-sinf(deg),		0.0f,
+			0.0f,	sinf(deg),	 cosf(deg),		0.0f,
+			0.0f,	0.0f,			 0.0f,		1.0f */
 
 mat4 rotate_x(float deg) {
 	return mat4(
-		1.0f,	0.0f,								0.0f,								0.0f,
-		0.0f,	cosf(deg * degrees_to_radians),		sinf(deg * degrees_to_radians),		0.0f,
-		0.0f,	-sinf(deg * degrees_to_radians),	cosf(deg * degrees_to_radians),		0.0f,
-		0.0f,	0.0f,								0.0f,								1.0f);
+		1.0f, 0.0f, 0.0f, 0.0f,
+		0.0f, cosf(deg * degrees_to_radians), sinf(deg * degrees_to_radians), 0.0f,
+		0.0f, -sinf(deg * degrees_to_radians), cosf(deg * degrees_to_radians), 0.0f,
+		0.0f, 0.0f, 0.0f, 1.0f);
 }
-	/* opengl đọc
-		1.0f		0.0f							0.0f							0.0f
-		0.0f		cosf(deg * degrees_to_radians)	-sinf(deg * degrees_to_radians)	0.0f
-		0.0f		sinf(deg * degrees_to_radians)	cosf(deg * degrees_to_radians)	0.0f
-		0.0f		0.0f							0.0f							1.0f
-	*/
-	
+/* opengl đọc
+	1.0f		0.0f							0.0f							0.0f
+	0.0f		cosf(deg * degrees_to_radians)	-sinf(deg * degrees_to_radians)	0.0f
+	0.0f		sinf(deg * degrees_to_radians)	cosf(deg * degrees_to_radians)	0.0f
+	0.0f		0.0f							0.0f							1.0f
+*/
+
 //---------------------------------------------------------------
 /* m[16] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 	OpenGL đọc vào dạng cột:
@@ -1408,18 +1408,18 @@ mat4 rotate_x(float deg) {
 	2  6 10 14
 	3  7 11 15
 	*/
-// Hàm quay tạo ma trận quanh trục y 4x4 với góc quay tính bằng độ
-/*	cosf(deg),	0.0,	sinf(deg),	0.0f,
-	0.0,		1.0,	0.0f,		0.0f,
-	-sinf(deg),	0.0f,	cosf(deg),	0.0f,
-	0.0f,		0.0f,	0.0f,		1.0f */
+	// Hàm quay tạo ma trận quanh trục y 4x4 với góc quay tính bằng độ
+	/*	cosf(deg),	0.0,	sinf(deg),	0.0f,
+		0.0,		1.0,	0.0f,		0.0f,
+		-sinf(deg),	0.0f,	cosf(deg),	0.0f,
+		0.0f,		0.0f,	0.0f,		1.0f */
 
 mat4 rotate_y(float deg) {
 	return mat4(
-		cosf(deg * degrees_to_radians),		0.0f,	-sinf(deg * degrees_to_radians),	0.0f,
-		0.0f,								1.0f,	0.0f,								0.0f,
-		sinf(deg * degrees_to_radians),		0.0f,	cosf(deg * degrees_to_radians),		0.0f,
-		0.0f,								0.0f,	0.0f,								1.0f);
+		cosf(deg * degrees_to_radians), 0.0f, -sinf(deg * degrees_to_radians), 0.0f,
+		0.0f, 1.0f, 0.0f, 0.0f,
+		sinf(deg * degrees_to_radians), 0.0f, cosf(deg * degrees_to_radians), 0.0f,
+		0.0f, 0.0f, 0.0f, 1.0f);
 	/* opengl đọc
 		cosf(deg * degrees_to_radians)		0.0f	sinf(deg * degrees_to_radians)	0.0f
 		0.0f								1.0f	0.0f							0.0f
@@ -1427,7 +1427,7 @@ mat4 rotate_y(float deg) {
 		0.0f								0.0f	0.0f							1.0f
 	*/
 }
-	
+
 //---------------------------------------------------------------
 /* m[16] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 	OpenGL đọc vào dạng cột:
@@ -1436,18 +1436,18 @@ mat4 rotate_y(float deg) {
 	2  6 10 14
 	3  7 11 15
 	*/
-// Hàm quay tạo ma trận quanh trục z 4x4 với góc quay tính bằng độ
-/*	cosf(deg),	-sinf(deg),	0.0f,	0.0f,
-	sinf(deg),	cosf(deg),	0.0f,	0.0f,
-	0.0f,		0.0f,		1.0f,	0.0f,
-	0.0f,		0.0f,		0.0f,	1.0f */
+	// Hàm quay tạo ma trận quanh trục z 4x4 với góc quay tính bằng độ
+	/*	cosf(deg),	-sinf(deg),	0.0f,	0.0f,
+		sinf(deg),	cosf(deg),	0.0f,	0.0f,
+		0.0f,		0.0f,		1.0f,	0.0f,
+		0.0f,		0.0f,		0.0f,	1.0f */
 
 mat4 rotate_z(float deg) {
 	return mat4(
-		cosf(deg * degrees_to_radians),		sinf(deg * degrees_to_radians),		0.0f,	0.0f,
-		-sinf(deg * degrees_to_radians),	cosf(deg * degrees_to_radians),		0.0f,	0.0f,
-		0.0f,								0.0f,								1.0f,	0.0f,
-		0.0f,								0.0f,								0.0f,	1.0f);
+		cosf(deg * degrees_to_radians), sinf(deg * degrees_to_radians), 0.0f, 0.0f,
+		-sinf(deg * degrees_to_radians), cosf(deg * degrees_to_radians), 0.0f, 0.0f,
+		0.0f, 0.0f, 1.0f, 0.0f,
+		0.0f, 0.0f, 0.0f, 1.0f);
 	/* opengl đọc
 		cosf(deg * degrees_to_radians)		-sinf(deg * degrees_to_radians)	0.0f	0.0f
 		sinf(deg * degrees_to_radians)		cosf(deg * degrees_to_radians)	0.0f	0.0f
@@ -1455,7 +1455,7 @@ mat4 rotate_z(float deg) {
 		0.0f								0.0f							0.0f	1.0f
 	*/
 }
-	
+
 
 //---------------------------------------------------------------
 /* m[16] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
@@ -1465,20 +1465,20 @@ mat4 rotate_z(float deg) {
 	2  6 10 14
 	3  7 11 15
 	*/
-// Hàm tạo ma trận biến đổi tỷ lệ 4x4 với hệ số tỷ lệ trong mảng [x, y, z]
-	/*	uSx, 0.0, 0.0, 0.0,
-		0.0, uSy, 0.0, 0.0,
-		0.0, 0.0, uSz, 0.0,
-		0.0, 0.0, 0.0, 1.0)
-	*/
+	// Hàm tạo ma trận biến đổi tỷ lệ 4x4 với hệ số tỷ lệ trong mảng [x, y, z]
+		/*	uSx, 0.0, 0.0, 0.0,
+			0.0, uSy, 0.0, 0.0,
+			0.0, 0.0, uSz, 0.0,
+			0.0, 0.0, 0.0, 1.0)
+		*/
 mat4 scale(const vec3& sv) {
 	return mat4(
-		sv.x,		0.0f,		0.0f,		0.0f,
-		0.0f,		sv.y,		0.0f,		0.0f,
-		0.0f,		0.0f,		sv.z,		0.0f,
-		0.0f,		0.0f,		0.0f,		1.0f);
+		sv.x, 0.0f, 0.0f, 0.0f,
+		0.0f, sv.y, 0.0f, 0.0f,
+		0.0f, 0.0f, sv.z, 0.0f,
+		0.0f, 0.0f, 0.0f, 1.0f);
 }
-			
+
 
 // Hết định nghĩa kiểu ma trận 4x4
 //-----------------------------------------------
@@ -1500,10 +1500,10 @@ mat4 lookat(vec3& eye, vec3& at, const vec3& up) {
 	vec3 u = normalize(cross(n, up));	// u(x) là tích có hướng của n(z) và up
 	vec3 v = normalize(cross(u, n));	// v(y) là tích có hướng của n(z) và u(x)
 	return mat4(
-		u.x,											v.x,											n.x,											0.0f,
-		u.y,											v.y,											n.y,											0.0f,
-		u.z,											v.z,											n.z,											0.0f,
-		-eye.x * u.x - eye.y * u.y - eye.z * u.z,		-eye.x * v.x - eye.y * v.y - eye.z * v.z,		-eye.x * n.x - eye.y * n.y - eye.z * n.z,		1.0f);
+		u.x, v.x, n.x, 0.0f,
+		u.y, v.y, n.y, 0.0f,
+		u.z, v.z, n.z, 0.0f,
+		-eye.x * u.x - eye.y * u.y - eye.z * u.z, -eye.x * v.x - eye.y * v.y - eye.z * v.z, -eye.x * n.x - eye.y * n.y - eye.z * n.z, 1.0f);
 
 	/* opengl đọc
 		u.v[0]		u.v[1]		u.v[2]		-eye.v[0] * u.v[0] - eye.v[1] * u.v[1] - eye.v[2] * u.v[2]
@@ -1513,7 +1513,7 @@ mat4 lookat(vec3& eye, vec3& at, const vec3& up) {
 	*/
 
 }
-	
+
 
 /* m[16] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 	OpenGL đọc vào dạng cột:
@@ -1522,15 +1522,15 @@ mat4 lookat(vec3& eye, vec3& at, const vec3& up) {
 	2  6 10 14
 	3  7 11 15
 	*/
-// Phép chiếu phối cảnh
+	// Phép chiếu phối cảnh
 mat4 perspective(float fov, float aspect, float znear, float zfar) {
 	float top = znear * tan(fov * degrees_to_radians / 2);
 	float right = top * aspect;
 	return mat4(
-		znear / right,	0.0f,			0.0f,										0.0f,
-		0.0f,			znear / top,	0.0f,										0.0f,
-		0.0f,			0.0f,			-(zfar + znear) / (zfar - znear),			-1.0f,
-		0.0f,			0.0f,			-(2.0f * zfar * znear) / (zfar - znear),	0.0f);
+		znear / right, 0.0f, 0.0f, 0.0f,
+		0.0f, znear / top, 0.0f, 0.0f,
+		0.0f, 0.0f, -(zfar + znear) / (zfar - znear), -1.0f,
+		0.0f, 0.0f, -(2.0f * zfar * znear) / (zfar - znear), 0.0f);
 
 	/* opengl đọc
 		znear / right	0.0f			0.0f										tv.v[0]
@@ -1548,13 +1548,13 @@ mat4 perspective(float fov, float aspect, float znear, float zfar) {
 	2  6 10 14
 	3  7 11 15
 	*/
-// Frustum
+	// Frustum
 mat4 frustum(float left, float right, float bottom, float top, float znear, float zfar) {
 	return mat4(
-		2 * znear / (right - left),				0.0f,								0.0f,										0.0f,
-		0.0f,									2 * znear / (top - bottom),			0.0f,										0.0f,
-		(right + left) / (right - left),		(top + bottom) / (top - bottom),	-(zfar + znear) / (zfar - znear),			-1.0f,
-		0.0f,									0.0f,								-(2.0f * zfar * znear) / (zfar - znear),	0.0f);
+		2 * znear / (right - left), 0.0f, 0.0f, 0.0f,
+		0.0f, 2 * znear / (top - bottom), 0.0f, 0.0f,
+		(right + left) / (right - left), (top + bottom) / (top - bottom), -(zfar + znear) / (zfar - znear), -1.0f,
+		0.0f, 0.0f, -(2.0f * zfar * znear) / (zfar - znear), 0.0f);
 }
 
 
@@ -1565,15 +1565,15 @@ mat4 frustum(float left, float right, float bottom, float top, float znear, floa
 	2  6 10 14
 	3  7 11 15
 	*/
-// Phép chiếu trực giao
+	// Phép chiếu trực giao
 mat4 ortho(float left, float right, float bottom, float top, float znear, float zfar)
 {
 	return mat4(
-		2.0f / (right - left),				0.0f,								0.0f,								0.0f,
-		0.0f,								2.0f / (top - bottom),				0.0f,								0.0f,
-		0.0f,								0.0f,								-2.0f / (zfar - znear),				0.0f,
-		-(left + right) / (right - left),	-(top + bottom) / (top - bottom),	-(zfar + znear) / (zfar - znear),	1.0f);
-	
+		2.0f / (right - left), 0.0f, 0.0f, 0.0f,
+		0.0f, 2.0f / (top - bottom), 0.0f, 0.0f,
+		0.0f, 0.0f, -2.0f / (zfar - znear), 0.0f,
+		-(left + right) / (right - left), -(top + bottom) / (top - bottom), -(zfar + znear) / (zfar - znear), 1.0f);
+
 	/* opengl đọc
 		2.0f / (right - left)		0.0f					0.0f					-(left + right) / (right - left)
 		0.0f						2.0f / (top - bottom)	0.0f					-(top + bottom) / (top - bottom)
@@ -1581,4 +1581,4 @@ mat4 ortho(float left, float right, float bottom, float top, float znear, float 
 		0.0f						0.0f					0.0f					1.0f
 	*/
 }
-	
+

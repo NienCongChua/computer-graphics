@@ -9,6 +9,10 @@ uniform mat4 view_mat_shader;
 in vec4 fragment_color;
 out vec4 out_color;
 
+layout (location = 0) in vec4 position;
+layout (location = 1) in vec4 color; 
+layout (location = 2) in vec4 normal;
+
 void main() {
 
 
@@ -72,6 +76,6 @@ void main() {
 	vec3 Ia = La * Ka;
 
 
-	out_color = vec4(Is + Id + Ia, 1.0);
+	out_color = vec4(Is + Id + Ia, 1.0)  * fragment_color;
 
 }

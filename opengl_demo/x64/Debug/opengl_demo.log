@@ -1,28 +1,5 @@
 ﻿  main.cpp
-C:\Users\nienc\Downloads\Unit Cube\Unit Cube\opengl_demo\include\Vector_Matrix.h(1,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\nienc\Downloads\Unit Cube\Unit Cube\opengl_demo\main.cpp(287,19): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\nienc\Downloads\Unit Cube\Unit Cube\opengl_demo\main.cpp(322,20): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\nienc\Downloads\Unit Cube\Unit Cube\opengl_demo\main.cpp(498,58): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\nienc\Downloads\Unit Cube\Unit Cube\opengl_demo\main.cpp(813,59): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\nienc\Downloads\Unit Cube\Unit Cube\opengl_demo\main.cpp(821,59): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\nienc\Downloads\Unit Cube\Unit Cube\opengl_demo\main.cpp(835,59): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\nienc\Downloads\Unit Cube\Unit Cube\opengl_demo\main.cpp(840,23): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\nienc\Downloads\Unit Cube\Unit Cube\opengl_demo\main.cpp(840,18): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\nienc\Downloads\Unit Cube\Unit Cube\opengl_demo\main.cpp(847,59): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\nienc\Downloads\Unit Cube\Unit Cube\opengl_demo\main.cpp(852,23): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\nienc\Downloads\Unit Cube\Unit Cube\opengl_demo\main.cpp(852,18): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\nienc\Downloads\Unit Cube\Unit Cube\opengl_demo\main.cpp(860,59): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\nienc\Downloads\Unit Cube\Unit Cube\opengl_demo\main.cpp(865,23): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\nienc\Downloads\Unit Cube\Unit Cube\opengl_demo\main.cpp(865,18): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\nienc\Downloads\Unit Cube\Unit Cube\opengl_demo\main.cpp(868,18): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\nienc\Downloads\Unit Cube\Unit Cube\opengl_demo\main.cpp(907,52): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\nienc\Downloads\Unit Cube\Unit Cube\opengl_demo\main.cpp(919,52): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\nienc\Downloads\Unit Cube\Unit Cube\opengl_demo\main.cpp(926,52): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\nienc\Downloads\Unit Cube\Unit Cube\opengl_demo\main.cpp(933,52): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\nienc\Downloads\Unit Cube\Unit Cube\opengl_demo\main.cpp(940,52): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\nienc\Downloads\Unit Cube\Unit Cube\opengl_demo\main.cpp(947,52): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\nienc\Downloads\Unit Cube\Unit Cube\opengl_demo\main.cpp(1065,19): warning C4305: '-=': truncation from 'double' to 'GLfloat'
-C:\Users\nienc\Downloads\Unit Cube\Unit Cube\opengl_demo\main.cpp(1066,45): warning C4305: '+=': truncation from 'double' to 'GLfloat'
-C:\Users\nienc\Downloads\Unit Cube\Unit Cube\opengl_demo\main.cpp(1068,19): warning C4305: '+=': truncation from 'double' to 'GLfloat'
-C:\Users\nienc\Downloads\Unit Cube\Unit Cube\opengl_demo\main.cpp(1069,45): warning C4305: '-=': truncation from 'double' to 'GLfloat'
-  opengl_demo.vcxproj -> C:\Users\nienc\Downloads\Unit Cube\Unit Cube\x64\Debug\opengl_demo.exe
+C:\Users\nienc\Desktop\computer-graphics\opengl_demo\include\Vector_Matrix.h(1,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  (compiling source file 'main.cpp')
+  
+  opengl_demo.vcxproj -> C:\Users\nienc\Desktop\computer-graphics\x64\Debug\opengl_demo.exe
