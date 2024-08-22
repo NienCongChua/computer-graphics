@@ -76,7 +76,7 @@ Vertex Vertices[] =
 { {-0.5f, -0.5f,  0.5f, 1.0f },{ 0.0f, 1.0f, 1.0f, 1.0f },{ 0, -1, 0, 1 } },
 { { 0.5f, -0.5f,  0.5f, 1.0f },{ 0.0f, 1.0f, 1.0f, 1.0f },{ 0, -1, 0, 1 } },
 
-// Another face (Grey)
+// Bottom - face (Grey)
 { { 0.5f, -0.5f,  0.5f, 1.0f },{ 0.5f, 0.5f, 0.5f, 1.0f },{ 0, -1, 0, 1 } },
 { { 0.5f, -0.5f, -0.5f, 1.0f },{ 0.5f, 0.5f, 0.5f, 1.0f },{ 0, -1, 0, 1 } },
 { {-0.5f, -0.5f, -0.5f, 1.0f },{ 0.5f, 0.5f, 0.5f, 1.0f },{ 0, -1, 0, 1 } },
@@ -84,13 +84,29 @@ Vertex Vertices[] =
 { {-0.5f, -0.5f,  0.5f, 1.0f },{ 0.5f, 0.5f, 0.5f, 1.0f },{ 0, -1, 0, 1 } },
 { { 0.5f, -0.5f,  0.5f, 1.0f },{ 0.5f, 0.5f, 0.5f, 1.0f },{ 0, -1, 0, 1 } },
 
-// Another face (White)
+// Bottom face (White)
 { { 0.5f, -0.5f,  0.5f, 1.0f },{ 1.0f, 1.0f, 1.0f, 1.0f },{ 1, 1, -1, 1 } },
 { { 0.5f, -0.5f, -0.5f, 1.0f },{ 1.0f, 1.0f, 1.0f, 1.0f },{ 1, 1, -1, 1 } },
 { {-0.5f, -0.5f, -0.5f, 1.0f },{ 1.0f, 1.0f, 1.0f, 1.0f },{ 1, 1, -1, 1 } },
 { {-0.5f, -0.5f, -0.5f, 1.0f },{ 1.0f, 1.0f, 1.0f, 1.0f },{ 1, 1, -1, 1 } },
 { {-0.5f, -0.5f,  0.5f, 1.0f },{ 1.0f, 1.0f, 1.0f, 1.0f },{ 1, 1, -1, 1 } },
-{ { 0.5f, -0.5f,  0.5f, 1.0f },{ 1.0f, 1.0f, 1.0f, 1.0f },{ 1, 1, -1, 1 } }
+{ { 0.5f, -0.5f,  0.5f, 1.0f },{ 1.0f, 1.0f, 1.0f, 1.0f },{ 1, 1, -1, 1 } },
+
+// Front face (White)
+{ { 0.5f,  0.5f, 0.5f, 1.0f },{ 1.0f, 1.0f, 1.0f, 1.0f },{ 0, 0, 1, 1 } },
+{ {-0.5f,  0.5f, 0.5f, 1.0f },{ 1.0f, 1.0f, 1.0f, 1.0f },{ 0, 0, 1, 1 } },
+{ {-0.5f, -0.5f, 0.5f, 1.0f },{ 1.0f, 1.0f, 1.0f, 1.0f },{ 0, 0, 1, 1 } },
+{ {-0.5f, -0.5f, 0.5f, 1.0f },{ 1.0f, 1.0f, 1.0f, 1.0f },{ 0, 0, 1, 1 } },
+{ { 0.5f, -0.5f, 0.5f, 1.0f },{ 1.0f, 1.0f, 1.0f, 1.0f },{ 0, 0, 1, 1 } },
+{ { 0.5f,  0.5f, 0.5f, 1.0f },{ 1.0f, 1.0f, 1.0f, 1.0f },{ 0, 0, 1, 1 } },
+
+// Back face (Nâu đỏ)
+{ { 0.5f,  0.5f, -0.5f, 1.0f },{ 0.734f, 0.4375f, 0.4375f, 1.0f },{ 0, 0, -1, 1 } },
+{ {-0.5f,  0.5f, -0.5f, 1.0f },{ 0.734f, 0.4375f, 0.4375f, 1.0f },{ 0, 0, -1, 1 } },
+{ {-0.5f, -0.5f, -0.5f, 1.0f },{ 0.734f, 0.4375f, 0.4375f, 1.0f },{ 0, 0, -1, 1 } },
+{ {-0.5f, -0.5f, -0.5f, 1.0f },{ 0.734f, 0.4375f, 0.4375f, 1.0f },{ 0, 0, -1, 1 } },
+{ { 0.5f, -0.5f, -0.5f, 1.0f },{ 0.734f, 0.4375f, 0.4375f, 1.0f },{ 0, 0, -1, 1 } },
+{ { 0.5f,  0.5f, -0.5f, 1.0f },{ 0.734f, 0.4375f, 0.4375f, 1.0f },{ 0, 0, -1, 1 } },
 };
 // ----------------------------------------
 
@@ -158,6 +174,7 @@ float R[3] = { 40.0f, 20.0f, 12.0f };		// Định nghĩa các thông số eye c�
 float T[3] = { 0.0f, 0.0f, 0.0f };			// Định nghĩa các thông số at của hàm lookat
 float Y[3] = { 0.0f, 1.0f, 0.0f };			// Định nghĩa các tham số up của hàm lookat
 float U[3] = { 0.0f, 0.0f, 0.0f };			// Định nghĩa các tham số quay
+float S = 1.0f;								// Định nghĩa tham số chiều to nhỏ 
 
 
 bool
@@ -168,17 +185,21 @@ scaled = false;
 enum {
 	// Các chi tiết có thể chuyển động được liệt kê ở đây (xoay, tịnh tiến và scale)
 	_main,				// Định nghĩa chi tiết _main
+	_cuaNK,				// Định nghĩa chi tiết cửa nhà kho
 	NumJointAngles,	
 	Quit		
 };
 
 GLfloat
 thetat[NumJointAngles] = {		// Hàm dùng tịnh tiến các chi tiết
-	0.0			// Giá trị ban đầu của chi tiết _main theo chức năng tịnh tiến 
+	0.0,			// Giá trị ban đầu của chi tiết _main theo chức năng tịnh tiến 
+	0.0
+
 },
 
 thetar[NumJointAngles] = {
-	0.0			// Giá trị ban đầu của chi tiết _main theo chức năng quay
+	0.0,			// Giá trị ban đầu của chi tiết _main theo chức năng quay
+	270.0
 };
 
 GLint angle = _main;	// Khởi tạo đối tượng chuyển động ban đầu
@@ -192,7 +213,7 @@ namespace Wall		// Định nghĩa namespace Wall chứa các hàm vẽ các bứ
 		mvstack.push(model_mat_cpp);
 
 		mat4 instance = identity_mat4();
-		instance = scale(vec3(70.0f, 0.0f, 70.0f));	 // Kích thước sàn nhà
+		instance = scale(vec3(120.0f, 0.0f, 120.0f));	 // Kích thước sàn nhà
 
 		mat4 model_box = model_mat_cpp * instance;
 
@@ -215,7 +236,7 @@ namespace Wall		// Định nghĩa namespace Wall chứa các hàm vẽ các bứ
 
 		mat4 instance = identity_mat4();
 		instance = rotate_x(90) * rotate_z(90) *
-			scale(vec3(70.0f, 0.0f, 50.0f));	 // Kích thước tường
+			scale(vec3(120.0f, 0.0f, 50.0f));	 // Kích thước tường
 
 		mat4 model_box = model_mat_cpp * instance;
 
@@ -238,7 +259,7 @@ namespace Wall		// Định nghĩa namespace Wall chứa các hàm vẽ các bứ
 
 		mat4 instance = identity_mat4();
 		instance = rotate_x(90) * rotate_z(90) *
-			scale(vec3(70.0f, 0.0f, 50.0f));	 // Kích thước tường
+			scale(vec3(120.0f, 0.0f, 50.0f));	 // Kích thước tường
 
 		mat4 model_box = model_mat_cpp * instance;
 
@@ -260,7 +281,7 @@ namespace Wall		// Định nghĩa namespace Wall chứa các hàm vẽ các bứ
 		mvstack.push(model_mat_cpp);
 
 		mat4 instance = identity_mat4();
-		instance = scale(vec3(70.0f, 0.0f, 70.0f)) *   // Kích thước sàn nhà
+		instance = scale(vec3(120.0f, 0.0f, 120.0f)) *   // Kích thước sàn nhà
 			rotate_y(90) * rotate_z(90);	 
 
 		mat4 model_box = model_mat_cpp * instance;
@@ -284,7 +305,7 @@ namespace Wall		// Định nghĩa namespace Wall chứa các hàm vẽ các bứ
 
 		mat4 instance = identity_mat4();
 		instance = rotate_x(90) * rotate_z(90) *
-			scale(vec3(25.0f, 0.5f, 50.0f));	 // Kích thước tường
+			scale(vec3(50.0f, 0.5f, 50.0f));	 // Kích thước tường
 
 		mat4 model_box = model_mat_cpp * instance;
 
@@ -309,7 +330,7 @@ namespace Wall		// Định nghĩa namespace Wall chứa các hàm vẽ các bứ
 
 		mat4 instance = identity_mat4();
 		instance = 
-			scale(vec3(0.5f, 10.0f, 25.0f));	 // Kích thước tường
+			scale(vec3(0.5f, 10.0f, 60.0f));	 // Kích thước tường
 
 		mat4 model_box = model_mat_cpp * instance;
 
@@ -328,9 +349,27 @@ namespace Wall		// Định nghĩa namespace Wall chứa các hàm vẽ các bứ
 		model_mat_cpp = mvstack.pop();
 	}
 
-	void wall_7()
-	{
+	void wall_7() {
+		mvstack.push(model_mat_cpp);
 
+		mat4 instance = identity_mat4();
+		instance = 
+			scale(vec3(0.5f, 40.0f, 35.0f));
+
+		mat4 model_box = model_mat_cpp * instance;
+
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_box.m);
+
+		//glDrawArrays(GL_TRIANGLES, 0, 6); // Front - Red
+		//glDrawArrays(GL_TRIANGLES, 6, 6); // Back - Green
+		//glDrawArrays(GL_TRIANGLES, 12, 6); // Right - Blue
+		//glDrawArrays(GL_TRIANGLES, 18, 6); // Left - Yellow
+		//glDrawArrays(GL_TRIANGLES, 24, 6); // Top - Magenta
+		//glDrawArrays(GL_TRIANGLES, 30, 6); // Bottom - Cyan
+
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		model_mat_cpp = mvstack.pop();
 	}
 }
 
@@ -364,8 +403,8 @@ namespace Cua
 		mvstack.push(model_mat_cpp);
 
 		mat4 instance = identity_mat4();
-		instance =
-			scale(vec3(1.0f, 5.0f, 5.0f));
+		instance = 
+			scale(vec3(0.5f, 40.0f, 25.0f));
 
 		mat4 model_box = model_mat_cpp * instance;
 
@@ -473,7 +512,7 @@ void DisplayFunc(void)
 		at(T[0], T[1], T[2]),
 		up(Y[0], Y[1], Y[2]);
 
-	view_mat_cpp = lookat(eye, at, up) * rotate_x(U[0]) * rotate_y(U[1]) * rotate_z(U[2]);
+	view_mat_cpp = lookat(eye, at, up) * scale(vec3(S, S, S)) * rotate_x(U[0]) * rotate_y(U[1]) * rotate_z(U[2]);
 	view_mat_location = glGetUniformLocation(ProgramId, "view_mat_shader");
 	glUniformMatrix4fv(view_mat_location, 1, GL_FALSE, view_mat_cpp.m);
 
@@ -505,21 +544,21 @@ void DisplayFunc(void)
 	// Vẽ bức tường
 	mvstack.push(model_mat_cpp);		// Vẽ bức tường 1 
 	model_mat_cpp = model_mat_cpp * 
-		translate(vec3(-35, 10, 0));	// Vẽ bức tường 1
+		translate(vec3(-60, 10, 0));	// Vẽ bức tường 1
 	Wall::wall_2();						// Vẽ bức tường 1
 	model_mat_cpp = mvstack.pop();		// Vẽ bức tường 1
 
 	mvstack.push(model_mat_cpp);		// Vẽ bức tường 2
 	model_mat_cpp = model_mat_cpp *
 		rotate_y(90) * 
-		translate(vec3(35, 10, 0));		// Vẽ bức tường 2
+		translate(vec3(60, 10, 0));		// Vẽ bức tường 2
 	Wall::wall_3();						// Vẽ bức tường 2
 	model_mat_cpp = mvstack.pop();		// Vẽ bức tường 2
 
 	mvstack.push(model_mat_cpp);		// Vẽ bức tường 3
 	model_mat_cpp = model_mat_cpp *
 		rotate_y(90) *
-		translate(vec3(-35, 10, 0));	// Vẽ bức tường 3
+		translate(vec3(-60, 10, 0));	// Vẽ bức tường 3
 	Wall::wall_3();						// Vẽ bức tường 3
 	model_mat_cpp = mvstack.pop();		// Vẽ bức tường 3
 
@@ -534,21 +573,31 @@ void DisplayFunc(void)
 	mvstack.push(model_mat_cpp);
 	model_mat_cpp = model_mat_cpp *
 		rotate_y(90) *
-		translate(vec3(-10, 10, -22.5));
+		translate(vec3(0, 10, -35));
 	Wall::wall_5();
 	model_mat_cpp = mvstack.pop();
 
 	// Vẽ phần trên của nhà bên trong
 	mvstack.push(model_mat_cpp);
 	model_mat_cpp = model_mat_cpp *
-		translate(vec3(-10, 30, 22.5));
+		translate(vec3(-10, 30, 30));
 	Wall::wall_6();
+	model_mat_cpp = mvstack.pop();
+
+	// Vẽ phần bên của nhà bên trong
+	mvstack.push(model_mat_cpp);
+	model_mat_cpp = model_mat_cpp *
+		translate(vec3(-10, 5, 17.5));
+	Wall::wall_7();
 	model_mat_cpp = mvstack.pop();
 
 	// Vẽ cửa 1
 	mvstack.push(model_mat_cpp);
 	model_mat_cpp = model_mat_cpp *
-		translate(vec3(0, 0, 0));
+		translate(vec3(-10, 5, 47.5)) *
+		translate(vec3(0, 0, 12.5)) *
+		rotate_y(thetar[_cuaNK]) *
+		translate(vec3(0, 0, 12.5));
 	Cua::cua_1();
 	model_mat_cpp = mvstack.pop();
 
@@ -574,6 +623,18 @@ void KeyboardFunc(unsigned char key, int x, int y)  // Hàm định nghĩa các 
 	switch (key) {
 	case 27:
 		glutLeaveMainLoop();
+		break;
+	case '=':
+		S += 0.05;
+		if (S > 20) {
+			S -= 0.05;
+		}
+		break;
+	case'-':
+		S -= 0.05;
+		if (S < 0) {
+			S += 0.05;
+		}
 		break;
 	}
 }
@@ -630,6 +691,18 @@ void SpecialFunc(int key, int x, int y)			// Hàm xử lý phím đặc biệt
 		U[1] -= 10;
 		if (U[1] < 0) {
 			U[1] += 360;
+		}
+		break;
+	case GLUT_KEY_F1:
+		thetar[_cuaNK] -= 5;
+		if (thetar[_cuaNK] < 180) {
+			thetar[_cuaNK] += 5;
+		}
+		break;
+	case GLUT_KEY_F2:
+		thetar[_cuaNK] += 5;
+		if (thetar[_cuaNK] > 270) {
+			thetar[_cuaNK] -= 5;
 		}
 		break;
 	}
