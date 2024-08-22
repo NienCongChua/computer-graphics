@@ -149,6 +149,7 @@ projection_mat_location;
 float R[3] = { 40.0f, 20.0f, 12.0f };		// Định nghĩa các thông số eye của hàm lookat
 float T[3] = { 0.0f, 0.0f, 0.0f };			// Định nghĩa các thông số at của hàm lookat
 float Y[3] = { 0.0f, 1.0f, 0.0f };			// Định nghĩa các tham số up của hàm lookat
+float U[3] = { 0.0f, 0.0f, 0.0f };			// Định nghĩa các tham số quay
 
 
 bool
@@ -382,7 +383,7 @@ void DisplayFunc(void)
 		at(T[0], T[1], T[2]),
 		up(Y[0], Y[1], Y[2]);
 
-	view_mat_cpp = lookat(eye, at, up);
+	view_mat_cpp = lookat(eye, at, up) * rotate_x(U[0]) * rotate_y(U[1]) * rotate_z(U[2]);
 	view_mat_location = glGetUniformLocation(ProgramId, "view_mat_shader");
 	glUniformMatrix4fv(view_mat_location, 1, GL_FALSE, view_mat_cpp.m);
 
@@ -407,7 +408,7 @@ void DisplayFunc(void)
 
 	// Vẽ sàn nhà
 	mvstack.push(model_mat_cpp);
-	model_mat_cpp = model_mat_cpp * translate(vec3(0, -10, 0));
+	model_mat_cpp = model_mat_cpp * translate(vec3(0, -15, 0));
 	Wall::wall_1();
 	model_mat_cpp = mvstack.pop();
 
@@ -435,7 +436,7 @@ void DisplayFunc(void)
 	// Vẽ trần nhà
 	mvstack.push(model_mat_cpp);
 	model_mat_cpp = model_mat_cpp *
-		translate(vec3(0, 30, 0));
+		translate(vec3(0, 35, 0));
 	Wall::wall_4();
 	model_mat_cpp = mvstack.pop();
 
@@ -482,6 +483,42 @@ void SpecialFunc(int key, int x, int y)			// Hàm xử lý phím đặc biệt
 	case GLUT_KEY_ALT_R:;
 		break;
 	case GLUT_KEY_CTRL_R:
+		break;
+	case GLUT_KEY_INSERT:
+		U[0] += 10;
+		if (U[0] > 360) {
+			U[0] -= 360;
+		}
+		break;
+	case GLUT_KEY_DELETE:
+		U[0] -= 10;
+		if (U[0] < 0) {
+			U[0] += 360;
+		}
+		break;
+	case GLUT_KEY_PAGE_UP:
+		U[2] += 10;
+		if (U[2] > 360) {
+			U[2] -= 360;
+		}
+		break;
+	case GLUT_KEY_PAGE_DOWN:
+		U[2] -= 10;
+		if (U[2] < 0) {
+			U[2] += 360;
+		}
+		break;
+	case GLUT_KEY_HOME:
+		U[1] += 10;
+		if (U[1] > 360) {
+			U[1] -= 360;
+		}
+		break;
+	case GLUT_KEY_END:
+		U[1] -= 10;
+		if (U[1] < 0) {
+			U[1] += 360;
+		}
 		break;
 	}
 }
