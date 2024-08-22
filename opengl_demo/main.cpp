@@ -83,6 +83,14 @@ Vertex Vertices[] =
 { {-0.5f, -0.5f, -0.5f, 1.0f },{ 0.5f, 0.5f, 0.5f, 1.0f },{ 0, -1, 0, 1 } },
 { {-0.5f, -0.5f,  0.5f, 1.0f },{ 0.5f, 0.5f, 0.5f, 1.0f },{ 0, -1, 0, 1 } },
 { { 0.5f, -0.5f,  0.5f, 1.0f },{ 0.5f, 0.5f, 0.5f, 1.0f },{ 0, -1, 0, 1 } },
+
+// Another face (White)
+{ { 0.5f, -0.5f,  0.5f, 1.0f },{ 1.0f, 1.0f, 1.0f, 1.0f },{ 1, 1, -1, 1 } },
+{ { 0.5f, -0.5f, -0.5f, 1.0f },{ 1.0f, 1.0f, 1.0f, 1.0f },{ 1, 1, -1, 1 } },
+{ {-0.5f, -0.5f, -0.5f, 1.0f },{ 1.0f, 1.0f, 1.0f, 1.0f },{ 1, 1, -1, 1 } },
+{ {-0.5f, -0.5f, -0.5f, 1.0f },{ 1.0f, 1.0f, 1.0f, 1.0f },{ 1, 1, -1, 1 } },
+{ {-0.5f, -0.5f,  0.5f, 1.0f },{ 1.0f, 1.0f, 1.0f, 1.0f },{ 1, 1, -1, 1 } },
+{ { 0.5f, -0.5f,  0.5f, 1.0f },{ 1.0f, 1.0f, 1.0f, 1.0f },{ 1, 1, -1, 1 } }
 };
 // ----------------------------------------
 
@@ -332,7 +340,8 @@ namespace Box		// Định nghĩa namespace Box vẽ 1 hình hộp
 		mvstack.push(model_mat_cpp);
 
 		mat4 instance = identity_mat4();
-		instance = scale(vec3(5.0f, 5.0f, 5.0f));
+		instance = 
+			scale(vec3(5.0f, 5.0f, 5.0f));
 
 		mat4 model_box = model_mat_cpp * instance;
 
@@ -344,6 +353,32 @@ namespace Box		// Định nghĩa namespace Box vẽ 1 hình hộp
 		glDrawArrays(GL_TRIANGLES, 18, 6); // Left - Yellow
 		glDrawArrays(GL_TRIANGLES, 24, 6); // Top - Magenta
 		glDrawArrays(GL_TRIANGLES, 30, 6); // Bottom - Cyan
+
+		model_mat_cpp = mvstack.pop();
+	}
+}
+
+namespace Cua
+{
+	void cua_1() {
+		mvstack.push(model_mat_cpp);
+
+		mat4 instance = identity_mat4();
+		instance =
+			scale(vec3(1.0f, 5.0f, 5.0f));
+
+		mat4 model_box = model_mat_cpp * instance;
+
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_box.m);
+
+		//glDrawArrays(GL_TRIANGLES, 0, 6); // Front - Red
+		//glDrawArrays(GL_TRIANGLES, 6, 6); // Back - Green
+		//glDrawArrays(GL_TRIANGLES, 12, 6); // Right - Blue
+		//glDrawArrays(GL_TRIANGLES, 18, 6); // Left - Yellow
+		//glDrawArrays(GL_TRIANGLES, 24, 6); // Top - Magenta
+		//glDrawArrays(GL_TRIANGLES, 30, 6); // Bottom - Cyan
+
+		glDrawArrays(GL_TRIANGLES, 12, 48);
 
 		model_mat_cpp = mvstack.pop();
 	}
@@ -508,6 +543,13 @@ void DisplayFunc(void)
 	model_mat_cpp = model_mat_cpp *
 		translate(vec3(-10, 30, 22.5));
 	Wall::wall_6();
+	model_mat_cpp = mvstack.pop();
+
+	// Vẽ cửa 1
+	mvstack.push(model_mat_cpp);
+	model_mat_cpp = model_mat_cpp *
+		translate(vec3(0, 0, 0));
+	Cua::cua_1();
 	model_mat_cpp = mvstack.pop();
 
 #pragma endregion
