@@ -170,11 +170,11 @@ model_mat_location,
 view_mat_location,
 projection_mat_location;
 
-float R[3] = { 40.0f, 20.0f, 12.0f };		// Định nghĩa các thông số eye của hàm lookat
-float T[3] = { 0.0f, 0.0f, 0.0f };			// Định nghĩa các thông số at của hàm lookat
-float Y[3] = { 0.0f, 1.0f, 0.0f };			// Định nghĩa các tham số up của hàm lookat
+float R[3] = { 10.0f, 0.0f, -2.0f };		// Định nghĩa các thông số eye của hàm lookat
+// float T[3] = { 0.0f, 0.0f, 0.0f };			// Định nghĩa các thông số at của hàm lookat
+// float Y[3] = { 0.0f, 1.0f, 0.0f };			// Định nghĩa các tham số up của hàm lookat
 float U[3] = { 0.0f, 0.0f, 0.0f };			// Định nghĩa các tham số quay
-float S = 1.0f;								// Định nghĩa tham số chiều to nhỏ 
+float S = 0.1f;								// Định nghĩa tham số chiều to nhỏ 
 
 
 bool
@@ -371,6 +371,30 @@ namespace Wall		// Định nghĩa namespace Wall chứa các hàm vẽ các bứ
 
 		model_mat_cpp = mvstack.pop();
 	}
+
+	void wall_8() 
+	{
+		mvstack.push(model_mat_cpp);
+
+		mat4 instance = identity_mat4();
+		instance =
+			scale(vec3(1.0f, 1.0f, 1.0f));
+
+		mat4 model_box = model_mat_cpp * instance;
+
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_box.m);
+
+		//glDrawArrays(GL_TRIANGLES, 0, 6); // Front - Red
+		//glDrawArrays(GL_TRIANGLES, 6, 6); // Back - Green
+		//glDrawArrays(GL_TRIANGLES, 12, 6); // Right - Blue
+		//glDrawArrays(GL_TRIANGLES, 18, 6); // Left - Yellow
+		//glDrawArrays(GL_TRIANGLES, 24, 6); // Top - Magenta
+		//glDrawArrays(GL_TRIANGLES, 30, 6); // Bottom - Cyan
+
+		glDrawArrays(GL_TRIANGLES, 12, 36);
+
+		model_mat_cpp = mvstack.pop();
+	}
 }
 
 namespace Box		// Định nghĩa namespace Box vẽ 1 hình hộp
@@ -509,8 +533,8 @@ void DisplayFunc(void)
 	glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_mat_cpp.m);
 
 	vec3	eye(R[0], R[1], R[2]),
-		at(T[0], T[1], T[2]),
-		up(Y[0], Y[1], Y[2]);
+		at(0, 0, 0),
+		up(0, 1, 0);
 
 	view_mat_cpp = lookat(eye, at, up) * scale(vec3(S, S, S)) * rotate_x(U[0]) * rotate_y(U[1]) * rotate_z(U[2]);
 	view_mat_location = glGetUniformLocation(ProgramId, "view_mat_shader");
@@ -601,6 +625,10 @@ void DisplayFunc(void)
 	Cua::cua_1();
 	model_mat_cpp = mvstack.pop();
 
+	// Ve Khong gian 1
+	Wall::wall_8();
+
+
 #pragma endregion
 	glutSwapBuffers();
 }
@@ -635,6 +663,24 @@ void KeyboardFunc(unsigned char key, int x, int y)  // Hàm định nghĩa các 
 		if (S < 0) {
 			S += 0.05;
 		}
+		break;
+	case 'w':
+		R[0] += 0.5;
+		break;
+	case 's':
+		R[0] -= 0.5;
+		break;
+	case 'a':
+		R[1] += 0.5;
+		break;
+	case 'd':
+		R[1] -= 0.5;
+		break;
+	case 'q':
+		R[2] += 0.5;
+		break;
+	case 'e':
+		R[2] -= 0.5;
 		break;
 	}
 }
