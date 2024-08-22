@@ -186,6 +186,7 @@ enum {
 	// Các chi tiết có thể chuyển động được liệt kê ở đây (xoay, tịnh tiến và scale)
 	_main,				// Định nghĩa chi tiết _main
 	_cuaNK,				// Định nghĩa chi tiết cửa nhà kho
+	_cuaTL,				// Định nghĩa chi tiết của tủ lạnh
 	NumJointAngles,	
 	Quit		
 };
@@ -193,13 +194,15 @@ enum {
 GLfloat
 thetat[NumJointAngles] = {		// Hàm dùng tịnh tiến các chi tiết
 	0.0,			// Giá trị ban đầu của chi tiết _main theo chức năng tịnh tiến 
+	0.0,
 	0.0
 
 },
 
 thetar[NumJointAngles] = {
 	0.0,			// Giá trị ban đầu của chi tiết _main theo chức năng quay
-	270.0
+	270.0,			// Giá trị ban đầu của cửa nhà kho
+	90.0				// Giá trị ban đầu của cửa tủ lạnh
 };
 
 GLint angle = _main;	// Khởi tạo đối tượng chuyển động ban đầu
@@ -447,6 +450,53 @@ namespace Cua
 	}
 }
 
+namespace Tulanh		// Định nghĩa namespace vẽ 1 hình hộp
+{
+	void tulanh() {
+		mvstack.push(model_mat_cpp);
+
+		mat4 instance = identity_mat4();
+		instance =
+			scale(vec3(10.0f, 30.0f, 12.0f));
+
+		mat4 model_box = model_mat_cpp * instance;
+
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_box.m);
+
+		glDrawArrays(GL_TRIANGLES, 0, 6); // Front - Red
+		//glDrawArrays(GL_TRIANGLES, 6, 6); // Back - Green
+		glDrawArrays(GL_TRIANGLES, 12, 6); // Right - Blue
+		glDrawArrays(GL_TRIANGLES, 18, 6); // Left - Yellow
+		glDrawArrays(GL_TRIANGLES, 24, 6); // Top - Magenta
+		glDrawArrays(GL_TRIANGLES, 30, 6); // Bottom - Cyan
+
+		model_mat_cpp = mvstack.pop();
+	}
+
+	void cua_1() {
+		mvstack.push(model_mat_cpp);
+
+		mat4 instance = identity_mat4();
+		instance =
+			scale(vec3(10.0f, 30.0f, 0.5f));
+
+		mat4 model_box = model_mat_cpp * instance;
+
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_box.m);
+
+		//glDrawArrays(GL_TRIANGLES, 0, 6); // Front - Red
+		//glDrawArrays(GL_TRIANGLES, 6, 6); // Back - Green
+		//glDrawArrays(GL_TRIANGLES, 12, 6); // Right - Blue
+		//glDrawArrays(GL_TRIANGLES, 18, 6); // Left - Yellow
+		//glDrawArrays(GL_TRIANGLES, 24, 6); // Top - Magenta
+		//glDrawArrays(GL_TRIANGLES, 30, 6); // Bottom - Cyan
+
+		glDrawArrays(GL_TRIANGLES, 0, 48);
+
+		model_mat_cpp = mvstack.pop();
+	}
+}
+
 #pragma endregion
 // ------------------------------------------
 string ReadShaderSourceFile(string fileName) {
@@ -626,7 +676,29 @@ void DisplayFunc(void)
 	model_mat_cpp = mvstack.pop();
 
 	// Ve Khong gian 1
-	Wall::wall_8();
+	// Vẽ cửa tủ lạnh
+	mvstack.push(model_mat_cpp);
+	model_mat_cpp = model_mat_cpp *
+		translate(vec3(-4, 0, 47.5)) *
+		translate(vec3(5, 0, 0)) *
+		rotate_y(thetar[_cuaTL]) *
+		translate(vec3(5, 0, 0));
+	Tulanh::cua_1();
+	model_mat_cpp = mvstack.pop();
+
+	// Vẽ tủ lạnh
+	mvstack.push(model_mat_cpp);
+	model_mat_cpp = model_mat_cpp *
+		translate(vec3(-4, 0, 52.5));
+	Tulanh::tulanh();
+	model_mat_cpp = mvstack.pop();
+
+	// Vẽ Poster_1
+	/*mvstack.push(model_mat_cpp);
+	model_mat_cpp = model_mat_cpp *
+		translate(vec3(20, 0, 0));
+	Poster::poster_1();
+	model_mat_cpp = mvstack.pop();*/
 
 
 #pragma endregion
@@ -739,16 +811,28 @@ void SpecialFunc(int key, int x, int y)			// Hàm xử lý phím đặc biệt
 			U[1] += 360;
 		}
 		break;
-	case GLUT_KEY_F1:
+	case GLUT_KEY_F1:				// Đóng cửa nhà kho
 		thetar[_cuaNK] -= 5;
 		if (thetar[_cuaNK] < 180) {
 			thetar[_cuaNK] += 5;
 		}
 		break;
-	case GLUT_KEY_F2:
+	case GLUT_KEY_F2:				// Mở cửa nhà kho
 		thetar[_cuaNK] += 5;
 		if (thetar[_cuaNK] > 270) {
 			thetar[_cuaNK] -= 5;
+		}
+		break;
+	case GLUT_KEY_F3:				// Đóng cửa tủ lạnh
+		thetar[_cuaTL] -= 5;
+		if (thetar[_cuaTL] < 90) {
+			thetar[_cuaTL] += 5;
+		}
+		break;
+	case GLUT_KEY_F4:				// Mở cửa tủ lạnh
+		thetar[_cuaTL] += 5;
+		if (thetar[_cuaTL] > 180) {
+			thetar[_cuaTL] -= 5;
 		}
 		break;
 	}
