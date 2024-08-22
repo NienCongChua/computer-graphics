@@ -178,7 +178,8 @@ GLint angle = _main;	// Khởi tạo đối tượng chuyển động ban đầu
 #pragma region Các hàm vẽ các đối tượng 
 namespace Wall		// Định nghĩa namespace Wall chứa các hàm vẽ các bức tường
 {
-	void wall_1() {
+	void wall_1() 
+	{
 		mvstack.push(model_mat_cpp);
 
 		mat4 instance = identity_mat4();
@@ -195,15 +196,17 @@ namespace Wall		// Định nghĩa namespace Wall chứa các hàm vẽ các bứ
 		//glDrawArrays(GL_TRIANGLES, 24, 6); // Top - Magenta
 		//glDrawArrays(GL_TRIANGLES, 30, 6); // Bottom - Cyan
 
-		glDrawArrays(GL_TRIANGLES, 36, 6); // Bottom - Cyan
+		glDrawArrays(GL_TRIANGLES, 36, 6); // Another grey
 		model_mat_cpp = mvstack.pop();
 	}
 
-	void wall_2() {
+	void wall_2() 
+	{
 		mvstack.push(model_mat_cpp);
 
 		mat4 instance = identity_mat4();
-		instance = scale(vec3(70.0f, 0.0f, 70.0f));	 // Kích thước sàn nhà
+		instance = rotate_x(90) * rotate_z(90) *
+			scale(vec3(70.0f, 0.0f, 50.0f));	 // Kích thước tường
 
 		mat4 model_box = model_mat_cpp * instance;
 
@@ -214,9 +217,55 @@ namespace Wall		// Định nghĩa namespace Wall chứa các hàm vẽ các bứ
 		//glDrawArrays(GL_TRIANGLES, 12, 6); // Right - Blue
 		//glDrawArrays(GL_TRIANGLES, 18, 6); // Left - Yellow
 		//glDrawArrays(GL_TRIANGLES, 24, 6); // Top - Magenta
-		//glDrawArrays(GL_TRIANGLES, 30, 6); // Bottom - Cyan
+		glDrawArrays(GL_TRIANGLES, 30, 6); // Bottom - Cyan
+		//glDrawArrays(GL_TRIANGLES, 36, 6); // Another Grey
 
-		glDrawArrays(GL_TRIANGLES, 36, 6); // Bottom - Cyan
+		model_mat_cpp = mvstack.pop();
+	}
+
+	void wall_3()
+	{
+		mvstack.push(model_mat_cpp);
+
+		mat4 instance = identity_mat4();
+		instance = rotate_x(90) * rotate_z(90) *
+			scale(vec3(70.0f, 0.0f, 50.0f));	 // Kích thước tường
+
+		mat4 model_box = model_mat_cpp * instance;
+
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_box.m);
+
+		//glDrawArrays(GL_TRIANGLES, 0, 6); // Front - Red
+		//glDrawArrays(GL_TRIANGLES, 6, 6); // Back - Green
+		//glDrawArrays(GL_TRIANGLES, 12, 6); // Right - Blue
+		//glDrawArrays(GL_TRIANGLES, 18, 6); // Left - Yellow
+		glDrawArrays(GL_TRIANGLES, 24, 6); // Top - Magenta
+		//glDrawArrays(GL_TRIANGLES, 30, 6); // Bottom - Cyan
+		//glDrawArrays(GL_TRIANGLES, 36, 6); // Another Grey
+
+		model_mat_cpp = mvstack.pop();
+	}
+
+	void wall_4()
+	{
+		mvstack.push(model_mat_cpp);
+
+		mat4 instance = identity_mat4();
+		instance = scale(vec3(70.0f, 0.0f, 70.0f)) *   // Kích thước sàn nhà
+			rotate_y(90) * rotate_z(90);	 
+
+		mat4 model_box = model_mat_cpp * instance;
+
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_box.m);
+
+		//glDrawArrays(GL_TRIANGLES, 0, 6); // Front - Red
+		//glDrawArrays(GL_TRIANGLES, 6, 6); // Back - Green
+		//glDrawArrays(GL_TRIANGLES, 12, 6); // Right - Blue
+		glDrawArrays(GL_TRIANGLES, 18, 6); // Left - Yellow
+		//glDrawArrays(GL_TRIANGLES, 24, 6); // Top - Magenta
+		//glDrawArrays(GL_TRIANGLES, 30, 6); // Bottom - Cyan
+		//glDrawArrays(GL_TRIANGLES, 36, 6); // Another - Grey
+
 		model_mat_cpp = mvstack.pop();
 	}
 }
@@ -358,9 +407,38 @@ void DisplayFunc(void)
 
 	// Vẽ sàn nhà
 	mvstack.push(model_mat_cpp);
-	model_mat_cpp = model_mat_cpp;
+	model_mat_cpp = model_mat_cpp * translate(vec3(0, -10, 0));
 	Wall::wall_1();
 	model_mat_cpp = mvstack.pop();
+
+	// Vẽ bức tường
+	mvstack.push(model_mat_cpp);		// Vẽ bức tường 1 
+	model_mat_cpp = model_mat_cpp * 
+		translate(vec3(-35, 10, 0));	// Vẽ bức tường 1
+	Wall::wall_2();						// Vẽ bức tường 1
+	model_mat_cpp = mvstack.pop();		// Vẽ bức tường 1
+
+	mvstack.push(model_mat_cpp);		// Vẽ bức tường 2
+	model_mat_cpp = model_mat_cpp *
+		rotate_y(90) * 
+		translate(vec3(35, 10, 0));		// Vẽ bức tường 2
+	Wall::wall_3();						// Vẽ bức tường 2
+	model_mat_cpp = mvstack.pop();		// Vẽ bức tường 2
+
+	mvstack.push(model_mat_cpp);		// Vẽ bức tường 3
+	model_mat_cpp = model_mat_cpp *
+		rotate_y(90) *
+		translate(vec3(-35, 10, 0));	// Vẽ bức tường 3
+	Wall::wall_3();						// Vẽ bức tường 3
+	model_mat_cpp = mvstack.pop();		// Vẽ bức tường 3
+
+	// Vẽ trần nhà
+	mvstack.push(model_mat_cpp);
+	model_mat_cpp = model_mat_cpp *
+		translate(vec3(0, 30, 0));
+	Wall::wall_4();
+	model_mat_cpp = mvstack.pop();
+
 #pragma endregion
 	glutSwapBuffers();
 }
