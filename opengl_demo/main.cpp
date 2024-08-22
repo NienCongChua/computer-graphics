@@ -74,7 +74,15 @@ Vertex Vertices[] =
 { {-0.5f, -0.5f, -0.5f, 1.0f },{ 0.0f, 1.0f, 1.0f, 1.0f },{ 0, -1, 0, 1 } },
 { {-0.5f, -0.5f, -0.5f, 1.0f },{ 0.0f, 1.0f, 1.0f, 1.0f },{ 0, -1, 0, 1 } },
 { {-0.5f, -0.5f,  0.5f, 1.0f },{ 0.0f, 1.0f, 1.0f, 1.0f },{ 0, -1, 0, 1 } },
-{ { 0.5f, -0.5f,  0.5f, 1.0f },{ 0.0f, 1.0f, 1.0f, 1.0f },{ 0, -1, 0, 1 } }
+{ { 0.5f, -0.5f,  0.5f, 1.0f },{ 0.0f, 1.0f, 1.0f, 1.0f },{ 0, -1, 0, 1 } },
+
+// Another face (Grey)
+{ { 0.5f, -0.5f,  0.5f, 1.0f },{ 0.5f, 0.5f, 0.5f, 1.0f },{ 0, -1, 0, 1 } },
+{ { 0.5f, -0.5f, -0.5f, 1.0f },{ 0.5f, 0.5f, 0.5f, 1.0f },{ 0, -1, 0, 1 } },
+{ {-0.5f, -0.5f, -0.5f, 1.0f },{ 0.5f, 0.5f, 0.5f, 1.0f },{ 0, -1, 0, 1 } },
+{ {-0.5f, -0.5f, -0.5f, 1.0f },{ 0.5f, 0.5f, 0.5f, 1.0f },{ 0, -1, 0, 1 } },
+{ {-0.5f, -0.5f,  0.5f, 1.0f },{ 0.5f, 0.5f, 0.5f, 1.0f },{ 0, -1, 0, 1 } },
+{ { 0.5f, -0.5f,  0.5f, 1.0f },{ 0.5f, 0.5f, 0.5f, 1.0f },{ 0, -1, 0, 1 } },
 };
 // ----------------------------------------
 
@@ -170,7 +178,47 @@ GLint angle = _main;	// Khởi tạo đối tượng chuyển động ban đầu
 #pragma region Các hàm vẽ các đối tượng 
 namespace Wall		// Định nghĩa namespace Wall chứa các hàm vẽ các bức tường
 {
-	
+	void wall_1() {
+		mvstack.push(model_mat_cpp);
+
+		mat4 instance = identity_mat4();
+		instance = scale(vec3(70.0f, 0.0f, 70.0f));	 // Kích thước sàn nhà
+
+		mat4 model_box = model_mat_cpp * instance;
+
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_box.m);
+
+		//glDrawArrays(GL_TRIANGLES, 0, 6); // Front - Red
+		//glDrawArrays(GL_TRIANGLES, 6, 6); // Back - Green
+		//glDrawArrays(GL_TRIANGLES, 12, 6); // Right - Blue
+		//glDrawArrays(GL_TRIANGLES, 18, 6); // Left - Yellow
+		//glDrawArrays(GL_TRIANGLES, 24, 6); // Top - Magenta
+		//glDrawArrays(GL_TRIANGLES, 30, 6); // Bottom - Cyan
+
+		glDrawArrays(GL_TRIANGLES, 36, 6); // Bottom - Cyan
+		model_mat_cpp = mvstack.pop();
+	}
+
+	void wall_2() {
+		mvstack.push(model_mat_cpp);
+
+		mat4 instance = identity_mat4();
+		instance = scale(vec3(70.0f, 0.0f, 70.0f));	 // Kích thước sàn nhà
+
+		mat4 model_box = model_mat_cpp * instance;
+
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_box.m);
+
+		//glDrawArrays(GL_TRIANGLES, 0, 6); // Front - Red
+		//glDrawArrays(GL_TRIANGLES, 6, 6); // Back - Green
+		//glDrawArrays(GL_TRIANGLES, 12, 6); // Right - Blue
+		//glDrawArrays(GL_TRIANGLES, 18, 6); // Left - Yellow
+		//glDrawArrays(GL_TRIANGLES, 24, 6); // Top - Magenta
+		//glDrawArrays(GL_TRIANGLES, 30, 6); // Bottom - Cyan
+
+		glDrawArrays(GL_TRIANGLES, 36, 6); // Bottom - Cyan
+		model_mat_cpp = mvstack.pop();
+	}
 }
 
 namespace Box		// Định nghĩa namespace Box vẽ 1 hình hộp
@@ -306,7 +354,13 @@ void DisplayFunc(void)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 #pragma region Gọi các hàm vẽ
 	// Các hàm vẽ sẽ được gọi trong region này
-	Box::box();
+	// Box::box();
+
+	// Vẽ sàn nhà
+	mvstack.push(model_mat_cpp);
+	model_mat_cpp = model_mat_cpp;
+	Wall::wall_1();
+	model_mat_cpp = mvstack.pop();
 #pragma endregion
 	glutSwapBuffers();
 }
