@@ -176,12 +176,6 @@ float R[3] = { 10.0f, 0.0f, -2.0f };		// Định nghĩa các thông số eye c�
 float U[3] = { 0.0f, 0.0f, 0.0f };			// Định nghĩa các tham số quay
 float S = 0.1f;								// Định nghĩa tham số chiều to nhỏ 
 
-
-bool
-translated = false,
-rotated = false,
-scaled = false;
-
 enum {
 	// Các chi tiết có thể chuyển động được liệt kê ở đây (xoay, tịnh tiến và scale)
 	_main,				// Định nghĩa chi tiết _main
@@ -201,8 +195,8 @@ thetat[NumJointAngles] = {		// Hàm dùng tịnh tiến các chi tiết
 
 thetar[NumJointAngles] = {
 	0.0,			// Giá trị ban đầu của chi tiết _main theo chức năng quay
-	270.0,			// Giá trị ban đầu của cửa nhà kho
-	90.0				// Giá trị ban đầu của cửa tủ lạnh
+	180.0,			// Giá trị ban đầu của cửa nhà kho
+	180.0				// Giá trị ban đầu của cửa tủ lạnh
 };
 
 GLint angle = _main;	// Khởi tạo đối tượng chuyển động ban đầu
@@ -357,7 +351,7 @@ namespace Wall		// Định nghĩa namespace Wall chứa các hàm vẽ các bứ
 
 		mat4 instance = identity_mat4();
 		instance = 
-			scale(vec3(0.5f, 40.0f, 35.0f));
+			scale(vec3(0.5f, 40.0f, 20.0f));
 
 		mat4 model_box = model_mat_cpp * instance;
 
@@ -395,6 +389,29 @@ namespace Wall		// Định nghĩa namespace Wall chứa các hàm vẽ các bứ
 		//glDrawArrays(GL_TRIANGLES, 30, 6); // Bottom - Cyan
 
 		glDrawArrays(GL_TRIANGLES, 12, 36);
+
+		model_mat_cpp = mvstack.pop();
+	}
+
+	void wall_9() {
+		mvstack.push(model_mat_cpp);
+
+		mat4 instance = identity_mat4();
+		instance =
+			scale(vec3(0.5f, 40.0f, 15.0f));
+
+		mat4 model_box = model_mat_cpp * instance;
+
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_box.m);
+
+		//glDrawArrays(GL_TRIANGLES, 0, 6); // Front - Red
+		//glDrawArrays(GL_TRIANGLES, 6, 6); // Back - Green
+		//glDrawArrays(GL_TRIANGLES, 12, 6); // Right - Blue
+		//glDrawArrays(GL_TRIANGLES, 18, 6); // Left - Yellow
+		//glDrawArrays(GL_TRIANGLES, 24, 6); // Top - Magenta
+		//glDrawArrays(GL_TRIANGLES, 30, 6); // Bottom - Cyan
+
+		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		model_mat_cpp = mvstack.pop();
 	}
@@ -497,6 +514,96 @@ namespace Tulanh		// Định nghĩa namespace vẽ 1 hình hộp
 	}
 }
 
+namespace BanTruoc
+{
+	void matban() {
+		mvstack.push(model_mat_cpp);
+
+		mat4 instance = identity_mat4();
+		instance =
+			scale(vec3(40.0f, 0.5f, 15.0f));
+
+		mat4 model_box = model_mat_cpp * instance;
+
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_box.m);
+
+		//glDrawArrays(GL_TRIANGLES, 0, 6); // Front - Red
+		//glDrawArrays(GL_TRIANGLES, 6, 6); // Back - Green
+		//glDrawArrays(GL_TRIANGLES, 12, 6); // Right - Blue
+		//glDrawArrays(GL_TRIANGLES, 18, 6); // Left - Yellow
+		//glDrawArrays(GL_TRIANGLES, 24, 6); // Top - Magenta
+		//glDrawArrays(GL_TRIANGLES, 30, 6); // Bottom - Cyan
+
+		glDrawArrays(GL_TRIANGLES, 0, 36); 
+		model_mat_cpp = mvstack.pop();
+	}
+
+	void _matban() {
+		mvstack.push(model_mat_cpp);
+
+		mat4 instance = identity_mat4();
+		instance =
+			scale(vec3(15.0f, 0.5f, 60.0f));
+
+		mat4 model_box = model_mat_cpp * instance;
+
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_box.m);
+
+		//glDrawArrays(GL_TRIANGLES, 0, 6); // Front - Red
+		//glDrawArrays(GL_TRIANGLES, 6, 6); // Back - Green
+		//glDrawArrays(GL_TRIANGLES, 12, 6); // Right - Blue
+		//glDrawArrays(GL_TRIANGLES, 18, 6); // Left - Yellow
+		//glDrawArrays(GL_TRIANGLES, 24, 6); // Top - Magenta
+		//glDrawArrays(GL_TRIANGLES, 30, 6); // Bottom - Cyan
+
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+		model_mat_cpp = mvstack.pop();
+	}
+
+	void thanban() {
+		mvstack.push(model_mat_cpp);
+
+		mat4 instance = identity_mat4();
+		instance =
+			scale(vec3(40.0f, 14.5f, 15.0f));
+
+		mat4 model_box = model_mat_cpp * instance;
+
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_box.m);
+
+		//glDrawArrays(GL_TRIANGLES, 0, 6); // Front - Red
+		glDrawArrays(GL_TRIANGLES, 6, 6); // Back - Green
+		glDrawArrays(GL_TRIANGLES, 12, 6); // Right - Blue
+		glDrawArrays(GL_TRIANGLES, 18, 6); // Left - Yellow
+		glDrawArrays(GL_TRIANGLES, 24, 6); // Top - Magenta
+		glDrawArrays(GL_TRIANGLES, 30, 6); // Bottom - Cyan
+
+		//glDrawArrays(GL_TRIANGLES, 0, 36);
+		model_mat_cpp = mvstack.pop();
+	}
+
+	void _thanban() {
+		mvstack.push(model_mat_cpp);
+
+		mat4 instance = identity_mat4();
+		instance =
+			scale(vec3(15.0f, 14.5f, 60.0f));
+
+		mat4 model_box = model_mat_cpp * instance;
+
+		glUniformMatrix4fv(model_mat_location, 1, GL_FALSE, model_box.m);
+
+		glDrawArrays(GL_TRIANGLES, 0, 6); // Front - Red
+		glDrawArrays(GL_TRIANGLES, 6, 6); // Back - Green
+		glDrawArrays(GL_TRIANGLES, 12, 6); // Right - Blue
+		//glDrawArrays(GL_TRIANGLES, 18, 6); // Left - Yellow
+		glDrawArrays(GL_TRIANGLES, 24, 6); // Top - Magenta
+		glDrawArrays(GL_TRIANGLES, 30, 6); // Bottom - Cyan
+
+		//glDrawArrays(GL_TRIANGLES, 0, 36);
+		model_mat_cpp = mvstack.pop();
+	}
+}
 #pragma endregion
 // ------------------------------------------
 string ReadShaderSourceFile(string fileName) {
@@ -661,21 +768,25 @@ void DisplayFunc(void)
 	// Vẽ phần bên của nhà bên trong
 	mvstack.push(model_mat_cpp);
 	model_mat_cpp = model_mat_cpp *
-		translate(vec3(-10, 5, 17.5));
+		translate(vec3(-10, 5, 10));
 	Wall::wall_7();
 	model_mat_cpp = mvstack.pop();
-
-	// Vẽ cửa 1
 	mvstack.push(model_mat_cpp);
 	model_mat_cpp = model_mat_cpp *
-		translate(vec3(-10, 5, 47.5)) *
+		translate(vec3(-10, 5, 52.5));
+	Wall::wall_9();
+	model_mat_cpp = mvstack.pop();
+
+	// Vẽ cửa nhà kho
+	mvstack.push(model_mat_cpp);
+	model_mat_cpp = model_mat_cpp *
+		translate(vec3(-10, 5, 32.5)) *
 		translate(vec3(0, 0, 12.5)) *
 		rotate_y(thetar[_cuaNK]) *
 		translate(vec3(0, 0, 12.5));
 	Cua::cua_1();
 	model_mat_cpp = mvstack.pop();
 
-	// Ve Khong gian 1
 	// Vẽ cửa tủ lạnh
 	mvstack.push(model_mat_cpp);
 	model_mat_cpp = model_mat_cpp *
@@ -693,12 +804,29 @@ void DisplayFunc(void)
 	Tulanh::tulanh();
 	model_mat_cpp = mvstack.pop();
 
-	// Vẽ Poster_1
-	/*mvstack.push(model_mat_cpp);
+	// Mặt bàn trước
+	mvstack.push(model_mat_cpp);
 	model_mat_cpp = model_mat_cpp *
-		translate(vec3(20, 0, 0));
-	Poster::poster_1();
-	model_mat_cpp = mvstack.pop();*/
+		translate(vec3(25, 0, 7.5));
+	BanTruoc::matban();
+	model_mat_cpp = mvstack.pop(); 
+	mvstack.push(model_mat_cpp);
+	model_mat_cpp = model_mat_cpp * 
+		translate(vec3(52.5, 0, 30));
+	BanTruoc::_matban();
+	model_mat_cpp = mvstack.pop();
+
+	// Vẽ thân bàn trước 
+	mvstack.push(model_mat_cpp);
+	model_mat_cpp = model_mat_cpp *
+		translate(vec3(25, -7.7, 7.5));
+	BanTruoc::thanban();
+	model_mat_cpp = mvstack.pop();
+	mvstack.push(model_mat_cpp);
+	model_mat_cpp = model_mat_cpp *
+		translate(vec3(52.5, -7.7, 30));
+	BanTruoc::_thanban();
+	model_mat_cpp = mvstack.pop();
 
 
 #pragma endregion
@@ -725,13 +853,13 @@ void KeyboardFunc(unsigned char key, int x, int y)  // Hàm định nghĩa các 
 		glutLeaveMainLoop();
 		break;
 	case '=':
-		S += 0.05;
+		S += 0.01;
 		if (S > 20) {
 			S -= 0.05;
 		}
 		break;
 	case'-':
-		S -= 0.05;
+		S -= 0.01;
 		if (S < 0) {
 			S += 0.05;
 		}

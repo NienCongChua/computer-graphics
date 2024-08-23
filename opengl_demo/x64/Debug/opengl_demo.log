@@ -2,8 +2,10 @@
 C:\Users\nienc\Desktop\computer-graphics\opengl_demo\include\Vector_Matrix.h(1,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   (compiling source file 'main.cpp')
   
-C:\Users\nienc\Desktop\computer-graphics\opengl_demo\main.cpp(728,8): warning C4305: '+=': truncation from 'double' to 'float'
-C:\Users\nienc\Desktop\computer-graphics\opengl_demo\main.cpp(730,9): warning C4305: '-=': truncation from 'double' to 'float'
-C:\Users\nienc\Desktop\computer-graphics\opengl_demo\main.cpp(734,8): warning C4305: '-=': truncation from 'double' to 'float'
-C:\Users\nienc\Desktop\computer-graphics\opengl_demo\main.cpp(736,9): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\nienc\Desktop\computer-graphics\opengl_demo\main.cpp(829,22): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\nienc\Desktop\computer-graphics\opengl_demo\main.cpp(834,24): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\nienc\Desktop\computer-graphics\opengl_demo\main.cpp(863,8): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\nienc\Desktop\computer-graphics\opengl_demo\main.cpp(865,9): warning C4305: '-=': truncation from 'double' to 'float'
+C:\Users\nienc\Desktop\computer-graphics\opengl_demo\main.cpp(869,8): warning C4305: '-=': truncation from 'double' to 'float'
+C:\Users\nienc\Desktop\computer-graphics\opengl_demo\main.cpp(871,9): warning C4305: '+=': truncation from 'double' to 'float'
   opengl_demo.vcxproj -> C:\Users\nienc\Desktop\computer-graphics\x64\Debug\opengl_demo.exe
