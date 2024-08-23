@@ -1,2 +1,2 @@
-# computer-graphics
-Make computer graphics to simulate a milk tea shop
+# Computer Graphics
+Make computer graphics to simulate a bedroom
